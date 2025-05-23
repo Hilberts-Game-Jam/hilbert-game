@@ -7,8 +7,8 @@ public class RoomManager : MonoBehaviour
 {
     
     public static RoomManager Instance;
-    public int room_number = 0;
-    public RoomType room_type = RoomType.RANDOM_ROOM;
+    public int roomNumber = 0;
+    public RoomType roomType = RoomType.RANDOM_ROOM;
 
     private void Awake()
     {
