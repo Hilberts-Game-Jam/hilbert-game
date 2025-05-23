@@ -1,12 +1,14 @@
 using UnityEngine;
 
-namespace ClassesAndEnums
-{
 
+
+public class ClassesAndEnums
+{
     public enum RoomType
     {
         RANDOM_ROOM,
         SCRIPTED_ROOM,
     }
-
 }
+
+

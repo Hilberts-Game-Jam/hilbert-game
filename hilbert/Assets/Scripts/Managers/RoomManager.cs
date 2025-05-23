@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using ClassesAndEnums;
+using static ClassesAndEnums;
 
 
 public class RoomManager : MonoBehaviour
