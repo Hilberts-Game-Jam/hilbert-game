@@ -12,7 +12,7 @@ public class RoomLayout
     {
         _width = width;
         _height = height;
-        
+
         // Initialize TileMap and filling it with free tiles
         _tileMap = new TileType[_width, _height];
 
@@ -50,11 +50,12 @@ public class RoomLayout
                     case TileType.FREE:
                         result = result + "F";
                         break;
-                    default: result = result + "E";
+                    default:
+                        result = result + "E";
                         break;
                 }
             }
         }
     }
-    
+
 }
