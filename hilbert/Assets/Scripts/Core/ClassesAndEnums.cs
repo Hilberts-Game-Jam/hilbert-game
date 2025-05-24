@@ -41,7 +41,10 @@ namespace Scripts.Core
         {
             NONE,
             DOOR,
-            ITEM
+            ITEM,
+            WEIRDNESS25,
+            WEIRDNESS50,
+            WEIRDNESS100,
         }
 
         public enum KeyObjectType

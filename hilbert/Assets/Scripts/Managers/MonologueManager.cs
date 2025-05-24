@@ -11,8 +11,13 @@ namespace Managers
     [System.Serializable]
     public class MonologueData
     {
-        public List<string> item;
         public List<string> none;
+        public List<string> item;
+        public List<string> door;
+        public List<string> weirdness25;
+        public List<string> weirdness50;
+        public List<string> weirdness100;
+        
     }
     
     public class MonologueManager : MonoBehaviour
@@ -119,11 +124,23 @@ namespace Managers
 
             switch (interactionType)
             {
-                case ClassesAndEnums.InteractionType.ITEM:
+                case ClassesAndEnums.InteractionType.NONE:
                     textOptions = _monologueData.item;
                     break;
-                case ClassesAndEnums.InteractionType.NONE:
+                case ClassesAndEnums.InteractionType.ITEM:
                     textOptions = _monologueData.none;
+                    break;
+                case ClassesAndEnums.InteractionType.DOOR:
+                    textOptions = _monologueData.door;
+                    break;
+                case ClassesAndEnums.InteractionType.WEIRDNESS25:
+                    textOptions = _monologueData.weirdness25;
+                    break;
+                case ClassesAndEnums.InteractionType.WEIRDNESS50:
+                    textOptions = _monologueData.weirdness50;
+                    break;
+                case ClassesAndEnums.InteractionType.WEIRDNESS100:
+                    textOptions = _monologueData.weirdness100;
                     break;
                 default:
                     Debug.LogWarning($"No dialogue texts defined for interaction type: {interactionType}");
