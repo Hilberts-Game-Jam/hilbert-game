@@ -16,6 +16,19 @@ namespace Scripts.Core
             BLOCKED,
         }
         
+        /// <summary>
+        /// Used to specify the type of interaction that the player is performing.
+        /// </summary>
+        public enum InteractionType
+        {
+            NONE,
+            DOOR,
+            ITEM,
+            WEIRDNESS25,
+            WEIRDNESS50,
+            WEIRDNESS100,
+        }
+        
         public enum KeyObjectType
         {
             //TODO: Add more key object types as needed
