@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Transactions;
 using Scripts.Rooms;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Scripts.Core.ClassesAndEnums;
@@ -17,6 +20,7 @@ namespace Scripts.Managers
         public RoomType roomType = RoomType.RANDOM_ROOM;
         public RoomLayout layout;
         public Vector2Int door_pos = new Vector2Int();
+        public List<FurnitureObjectInfo> furniture_objects = new List<FurnitureObjectInfo>();
 
         private void Awake()
         {
@@ -47,6 +51,9 @@ namespace Scripts.Managers
 
         private void GenerateNewRoom()
         {
+
+            furniture_objects = new List<FurnitureObjectInfo>();
+            
             // TODO: Random Rooms, right now only test room
             Random random = new Random();
             layout = new RoomLayout(random.Next(7, 11), random.Next(7, 11));
@@ -75,7 +82,31 @@ namespace Scripts.Managers
             
             // Adding Objects based on weirdness level
             
+            // Adding a bed
+            if (random.Next(0, 2) == 1) // Double bed
+            {
+
+            }
+            else // bed
+            {
+                
+            }
             
+        }
+
+        private bool CheckObjectValidity(int x_s, int x_e, int y_s, int y_e)
+        {
+
+            for (int i = x_s; i < x_e; i++)
+            {
+                for (int j = y_s; j < y_e; j++)
+                {
+                    if (layout.GetTileAt(i, j) != TileType.FREE) return false;
+                }
+            }
+
+            return true;
+
         }
 
         // Update is called once per frame
