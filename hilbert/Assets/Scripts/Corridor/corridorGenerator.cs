@@ -23,21 +23,10 @@ namespace Corridor
         private TileBase[] upperDoorElements;
         private TileBase[] bottomDoorElements;
 
-        public void generateCorridor()
+        public void generateCorridor(int position_x)
         {
-            //private TileBase[] upperWall = new TileBase[] { lampUpper, wallUpper };
 
-            GameObject player = GameObject.Find("Player");
-            if (player == null)
-            {
-                Debug.LogError("Player GameObject not found!");
-                return;
-            }
-
-            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
-            playerPosition_x = (int)GameObject.Find("Player").transform.position.x;
-
-            for (int x = playerPosition_x - 10; x < playerPosition_x + 10; x++)
+            for (int x = position_x - 10; x < position_x + 10; x++)
             {
                 for (int y = -2; y < 3; y++)
                 {
@@ -98,10 +87,6 @@ namespace Corridor
             }
         }
 
-        void Start()
-        {
-            generateCorridor();
-        }
 
         void Awake()
         {
