@@ -45,9 +45,6 @@ namespace Scripts.Core
                             break;
                     }
                     // Set Tile Rotation
-                    _tilemap.SetTile(pos, tile);
-                    _tilemap.SetTransformMatrix(pos, Matrix4x4.Rotate(Quaternion.Euler(0, 0, rotation)));
-                    _tilemap.RefreshTile(pos);
                 }
             }
             
