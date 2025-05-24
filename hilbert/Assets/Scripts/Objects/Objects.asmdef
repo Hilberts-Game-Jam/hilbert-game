@@ -1,0 +1,8 @@
+{
+  "name": "Objects",
+  "rootNamespace": "Scripts.Objects",
+  "references": [
+    "Interfaces",
+    "Core"
+  ]
+}
