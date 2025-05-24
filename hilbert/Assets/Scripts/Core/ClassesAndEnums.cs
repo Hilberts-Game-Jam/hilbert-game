@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Scripts.Core
 {
-    public class ClassesAndEnums
+    public static class ClassesAndEnums
     {
         public enum RoomType
         {
             RANDOM_ROOM,
-            SCRIPTED_ROOM,
+            SCRIPTED_ROOM
         }
 
         public enum TileType
@@ -18,7 +18,7 @@ namespace Scripts.Core
 
         public enum ObjectOverlayType
         {
-            BLOODSTAINED,
+            SWEATSTAINED,
             BURNED,
             BROKEN,
             NONE
@@ -31,7 +31,8 @@ namespace Scripts.Core
             TABLE,
             CHAIR,
             MISC,
-            CLOTHES
+            CLOTHES,
+            SUITCASE
         }
 
         public enum KeyObjectType
@@ -39,7 +40,7 @@ namespace Scripts.Core
             //TODO: Add more key object types as needed
         }
         
-        public class D20
+        public static class D20
         {
             public static int Roll()
             {
