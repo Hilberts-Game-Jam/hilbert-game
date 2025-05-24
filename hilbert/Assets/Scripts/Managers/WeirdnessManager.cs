@@ -50,19 +50,11 @@ namespace Managers
         
         public static void IncrementWeirdness()
         {
-            SetWeirdnessLevel(WeirdnessLevel + 1);
+            WeirdnessLevel += 1;
         }
         public static void DecrementWeirdness()
         {
-            SetWeirdnessLevel(WeirdnessLevel - 1);
+            WeirdnessLevel -= 1;
         }
-
-        public static void SetWeirdnessLevel(int level)
-        {
-            WeirdnessLevel = level;
-            // Ensure weirdness level is between 1 and 3
-            WeirdnessLevel = Mathf.Clamp(WeirdnessLevel, 1, 3);
-        }
-        
     }
 }

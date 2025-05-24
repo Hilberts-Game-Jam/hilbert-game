@@ -48,25 +48,25 @@ namespace Scripts.Managers
         {
             // TODO: Random Rooms, right now only test room
             Random random = new Random();
-            layout = new RoomLayout(random.Next(5, 20), random.Next(5, 20));
+            layout = new RoomLayout(random.Next(7, 11), random.Next(7, 11));
             
             // Placing the door
             if (random.Next(0, 2) == 1)
             {
 
-                if (random.Next(0, 2) == 1) door_pos.x = 1;
-                else door_pos.x = layout.GetWidth() - 2;
+                if (random.Next(0, 2) == 1) door_pos.x = 0;
+                else door_pos.x = layout.GetWidth() - 1;
                 
-                door_pos.y = random.Next(1, layout.GetHeight());
+                door_pos.y = random.Next(1, layout.GetHeight() - 1);
                 
             }
             else
             {
 
-                if (random.Next(0, 2) == 1) door_pos.y = 1;
-                else door_pos.y = layout.GetHeight() - 2;
-
-                door_pos.x = random.Next(1, layout.GetWidth());
+                if (random.Next(0, 2) == 1) door_pos.y = 0;
+                else door_pos.y = layout.GetHeight() - 1;
+                
+                door_pos.x = random.Next(1, layout.GetWidth() - 1);
 
             }
             
