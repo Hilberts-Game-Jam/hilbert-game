@@ -1,0 +1,7 @@
+{
+  "name": "Managers",
+    "rootNamespace": "Scripts.Managers",
+  "references": [
+    "Core"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Player",
+  "rootNamespace": "Scripts.Player",
+    "references": [
+      "Unity.InputSystem",  
+      "Core",
+        "Input",
+        "Interfaces"
+    ]
+}
