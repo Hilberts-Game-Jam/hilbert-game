@@ -33,6 +33,16 @@ namespace Scripts.Core
             MISC,
             CLOTHES
         }
+        
+        /// <summary>
+        /// Used to specify the type of interaction that the player is performing.
+        /// </summary>
+        public enum InteractionType
+        {
+            NONE,
+            DOOR,
+            ITEM
+        }
 
         public enum KeyObjectType
         {
