@@ -20,6 +20,7 @@ namespace Managers
         
     }
     
+    // todo: add delay between monologue calls
     public class MonologueManager : MonoBehaviour
     {
         [SerializeField] private GameObject dialogPrefab;
@@ -72,10 +73,10 @@ namespace Managers
 
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
         {
-            // Reset auto close coroutine
+            // Timer Coroutine is still running, do not create a new dialog
             if (_autoCloseCoroutine != null)
             {
-                StopCoroutine(_autoCloseCoroutine);
+                return;
             }
             
             // Create dialog instance if it doesn't exist
@@ -122,13 +123,14 @@ namespace Managers
 
             List<string> textOptions = null;
 
+            // todo(opt): could make this more elegant
             switch (interactionType)
             {
                 case ClassesAndEnums.InteractionType.NONE:
-                    textOptions = _monologueData.item;
+                    textOptions = _monologueData.none;
                     break;
                 case ClassesAndEnums.InteractionType.ITEM:
-                    textOptions = _monologueData.none;
+                    textOptions = _monologueData.item;
                     break;
                 case ClassesAndEnums.InteractionType.DOOR:
                     textOptions = _monologueData.door;
