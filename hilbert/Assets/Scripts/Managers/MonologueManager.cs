@@ -14,10 +14,6 @@ namespace Managers
         public List<string> none;
         public List<string> item;
         public List<string> door;
-        public List<string> weirdness25;
-        public List<string> weirdness50;
-        public List<string> weirdness100;
-        
     }
     
     // todo: add delay between monologue calls
@@ -73,11 +69,16 @@ namespace Managers
 
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
         {
-            // Timer Coroutine is still running, do not create a new dialog
-            if (_autoCloseCoroutine != null)
+            if (interactionType != ClassesAndEnums.InteractionType.NONE &&
+                interactionType != ClassesAndEnums.InteractionType.DOOR &&
+                interactionType != ClassesAndEnums.InteractionType.ITEM)
             {
+                // Only handle specific interaction types
                 return;
             }
+            
+            // Timer Coroutine is still running, do not create a new dialog
+            if (_autoCloseCoroutine != null) { return; }
             
             // Create dialog instance if it doesn't exist
             if (_currentDialogInstance == null)
@@ -134,15 +135,6 @@ namespace Managers
                     break;
                 case ClassesAndEnums.InteractionType.DOOR:
                     textOptions = _monologueData.door;
-                    break;
-                case ClassesAndEnums.InteractionType.WEIRDNESS25:
-                    textOptions = _monologueData.weirdness25;
-                    break;
-                case ClassesAndEnums.InteractionType.WEIRDNESS50:
-                    textOptions = _monologueData.weirdness50;
-                    break;
-                case ClassesAndEnums.InteractionType.WEIRDNESS100:
-                    textOptions = _monologueData.weirdness100;
                     break;
                 default:
                     Debug.LogWarning($"No dialogue texts defined for interaction type: {interactionType}");
