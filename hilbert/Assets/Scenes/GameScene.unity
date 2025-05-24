@@ -507,7 +507,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3965b7eb271d84b4c9ed24d127ae1326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerConfig: {fileID: 11400000, guid: a0a6a2e241f4a0a4e8e431fcbb16aa34, type: 2}
+  spawnerConfig: {fileID: 11400000, guid: 6ed3082f4e24d1a49a7c351480b1a2d0, type: 2}
+  _spawnerConfigs:
+  - {fileID: 11400000, guid: 6ed3082f4e24d1a49a7c351480b1a2d0, type: 2}
+  - {fileID: 11400000, guid: a3885f70cabd98e45a0c5099b1dbf0bf, type: 2}
+  - {fileID: 11400000, guid: a0a6a2e241f4a0a4e8e431fcbb16aa34, type: 2}
 --- !u!114 &914559108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomNumber: 0
   roomType: 0
+  door_pos: {x: 0, y: 0}
 --- !u!114 &914559109
 MonoBehaviour:
   m_ObjectHideFlags: 0
