@@ -34,6 +34,25 @@ namespace Scripts.Core
         {
             //TODO: Add more key object types as needed
         }
+
+        public class FurnitureObjectInfo
+        {
+
+            private int _x_start;
+            private int _y_start;
+            private int _x_end;
+            private int _y_end;
+            private string _name;
+            
+            public FurnitureObjectInfo(int x_start, int x_end, int y_start, int y_end, string name)
+            {
+                _x_start = x_start;
+                _y_start = y_start;
+                _x_end = x_end;
+                _y_end = y_end;
+                _name = name;
+            }
+        }
         
         public static class D20
         {
