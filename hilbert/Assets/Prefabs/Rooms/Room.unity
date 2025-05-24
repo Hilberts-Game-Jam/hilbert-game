@@ -413,6 +413,7 @@ MonoBehaviour:
   _floorTile: {fileID: 11400000, guid: 49955e59e9d53c545bdc8f86f2411c4f, type: 2}
   _doorTile: {fileID: 11400000, guid: b187144142339cb42b04fc20e0fa0d4e, type: 2}
   _blockedTile: {fileID: 11400000, guid: 403d71f52883e244db1d98c4f18afcc1, type: 2}
+  _player: {fileID: 6329614891509466097, guid: 42f40c377b9492e4fa5cd11544a6238b, type: 3}
 --- !u!4 &864714488
 Transform:
   m_ObjectHideFlags: 0

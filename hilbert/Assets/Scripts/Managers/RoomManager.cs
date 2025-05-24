@@ -35,7 +35,7 @@ namespace Scripts.Managers
         {
         
             // TODO: Random Rooms, right now only test room
-            layout = new RoomLayout(11, 10);
+            layout = new RoomLayout(10, 5);
             layout.SetTileAt(1, 1, TileType.DOOR);
             layout.SetTileAt(2, 2, TileType.BLOCKED);
             layout.SetTileAt(3, 2, TileType.BLOCKED);
