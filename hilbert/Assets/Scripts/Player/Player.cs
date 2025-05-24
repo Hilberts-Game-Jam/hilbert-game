@@ -1,4 +1,6 @@
 using System;
+using Core;
+using Scripts.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Scripts.Interfaces;
@@ -59,9 +61,16 @@ namespace Scripts.Player
         }
         public void OnUse(InputAction.CallbackContext context)
         {
+            
             if (context.performed && _currentInteractable != null)
             {
                 _currentInteractable.OnInteract();
+                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM); // todo: may properly pass a InteractionType if needed
+            }
+            else
+            {
+                // Event for NONE interaction type interaction
+                Events.TriggerInteraction();
             }
         }
 
