@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 834ea4475c19466e8081dfac9c4387cb, type: 3}
-  m_Name: ShelfCategory
+  m_Name: ShelfCategory3
   m_EditorClassIdentifier: 
   categoryName: Shelf
   variants:
   - prefab: {fileID: 3169543965684133065, guid: fe2a0688797129e46abcbcf7cb7c49fa, type: 3}
-    spawnWeight: 100
+    spawnWeight: 25
   - prefab: {fileID: 3169543965684133065, guid: 4453082b726ca26479e6eeaa6cd38152, type: 3}
-    spawnWeight: 100
+    spawnWeight: 25
   - prefab: {fileID: 3169543965684133065, guid: 679ce24be3271b44692610e98b4f3a69, type: 3}
-    spawnWeight: 100
+    spawnWeight: 50
   - prefab: {fileID: 3169543965684133065, guid: 9131d760ddd5cef4fa8ca629002d0b66, type: 3}
     spawnWeight: 100

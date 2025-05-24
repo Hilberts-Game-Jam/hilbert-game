@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 834ea4475c19466e8081dfac9c4387cb, type: 3}
-  m_Name: BedCategory
+  m_Name: BedCategory3
   m_EditorClassIdentifier: 
   categoryName: Bed
   variants:
   - prefab: {fileID: 3169543965684133065, guid: 4a9b921f2c2ea1848a4d026c64fdc0e6, type: 3}
-    spawnWeight: 100
+    spawnWeight: 25
   - prefab: {fileID: 3169543965684133065, guid: a95162be38c2fc14aa2bf015bb17701f, type: 3}
-    spawnWeight: 100
+    spawnWeight: 25
   - prefab: {fileID: 3169543965684133065, guid: 29cf68589d09c4a459d2cd64299e214d, type: 3}
-    spawnWeight: 100
+    spawnWeight: 50
   - prefab: {fileID: 3169543965684133065, guid: fef92998c18eed947b2af6710af6c55c, type: 3}
     spawnWeight: 100

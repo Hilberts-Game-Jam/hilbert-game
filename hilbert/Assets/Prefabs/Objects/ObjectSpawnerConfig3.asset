@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c5a678916b4cd8afb5a213283173d6, type: 3}
-  m_Name: ObjectSpawnerConfig
+  m_Name: ObjectSpawnerConfig3
   m_EditorClassIdentifier: 
   objectCategories:
   - {fileID: 11400000, guid: 8282be83176bc4f43837792d4115716b, type: 2}

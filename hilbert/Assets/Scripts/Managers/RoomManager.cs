@@ -40,6 +40,7 @@ namespace Scripts.Managers
 
             GenerateNewRoom();
 
+            // TODO: remove if not necessary for testing anymore
             SceneManager.LoadScene("Room");
 
         }
@@ -71,6 +72,9 @@ namespace Scripts.Managers
             }
             
             layout.SetTileAt(door_pos.x, door_pos.y, TileType.DOOR);
+            
+            // Adding Objects based on weirdness level
+            
             
         }
 

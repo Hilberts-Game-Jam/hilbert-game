@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 834ea4475c19466e8081dfac9c4387cb, type: 3}
-  m_Name: CouchCategory
+  m_Name: CouchCategory 2
   m_EditorClassIdentifier: 
   categoryName: Chest
   variants:
@@ -19,6 +19,6 @@ MonoBehaviour:
   - prefab: {fileID: 3169543965684133065, guid: aac06736be8c79e4d857c6bb123aee5f, type: 3}
     spawnWeight: 100
   - prefab: {fileID: 3169543965684133065, guid: 95835122ef20a88429089da2147b8d75, type: 3}
-    spawnWeight: 100
+    spawnWeight: 25
   - prefab: {fileID: 3169543965684133065, guid: 28bb3ed1b86e8094db7fa7bdc544718b, type: 3}
-    spawnWeight: 100
+    spawnWeight: 0
