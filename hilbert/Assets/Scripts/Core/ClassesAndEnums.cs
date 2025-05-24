@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scripts.Core
 {
-    public class ClassesAndEnums
+    public static class ClassesAndEnums
     {
         public enum RoomType
         {
@@ -18,31 +18,13 @@ namespace Scripts.Core
             DOOR,
             WALL
         }
-
-        public enum ObjectOverlayType
-        {
-            BLOODSTAINED,
-            BURNED,
-            BROKEN,
-            NONE
-        }
         
-        public enum ObjectType
-        {
-            BED,
-            SHELF,
-            TABLE,
-            CHAIR,
-            MISC,
-            CLOTHES
-        }
-
         public enum KeyObjectType
         {
             //TODO: Add more key object types as needed
         }
         
-        public class D20
+        public static class D20
         {
             public static int Roll()
             {
