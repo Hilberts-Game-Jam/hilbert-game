@@ -214,15 +214,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: -4.885881e+13
+      e01: 0
+      e02: -4.8856796e+13
+      e03: 2.439459e-19
+      e10: 2.06e-43
+      e11: 0
+      e12: 2.06e-43
+      e13: 7.64e-43
+      e20: 2.1625957e+12
+      e21: 0
+      e22: -8.908472e+9
+      e23: -1.4112878e-28
+      e30: 4.5908e-41
+      e31: 0
+      e32: 7.67e-43
+      e33: 7.64e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: 1.33e-43, g: 1.33e-43, b: 1.33e-43, a: 1.33e-43}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 12, y: 1, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -409,10 +433,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilemap: {fileID: 64218242}
-  _wallTile: {fileID: 11400000, guid: 42d376727c6f27744a0bbed668ce7131, type: 2}
-  _floorTile: {fileID: 11400000, guid: 49955e59e9d53c545bdc8f86f2411c4f, type: 2}
-  _doorTile: {fileID: 11400000, guid: b187144142339cb42b04fc20e0fa0d4e, type: 2}
-  _blockedTile: {fileID: 11400000, guid: 403d71f52883e244db1d98c4f18afcc1, type: 2}
+  _wallTile: {fileID: 11400000, guid: 981cd95baeb1cc4e3ab327e49e3ecc5f, type: 2}
+  _wallCornerTile: {fileID: 11400000, guid: 7f6379cc656c550a287817bc2e4eedf5, type: 2}
+  _floorTile: {fileID: 11400000, guid: 2b2466c786e10ef71b4cb35e34ce9261, type: 2}
+  _doorTile: {fileID: 11400000, guid: 192ade61cff6ec6f6b9a5d509fbf0d40, type: 2}
 --- !u!4 &864714488
 Transform:
   m_ObjectHideFlags: 0

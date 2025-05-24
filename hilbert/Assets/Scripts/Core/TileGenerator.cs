@@ -14,10 +14,10 @@ namespace Scripts.Core
 
         private RoomLayout _layout;
         [SerializeField] private Tilemap _tilemap;
-        [SerializeField] private WallTile _wallTile;
-        [SerializeField] private WallCornerTile _wallCornerTile;
+        [SerializeField] private Tile _wallTile;
+        [SerializeField] private Tile _wallCornerTile;
         [SerializeField] private Tile _floorTile;
-        [SerializeField] private DoorTile _doorTile;
+        [SerializeField] private Tile _doorTile;
         //[SerializeField] private Tile _blockedTile;
         private RoomType _type;
         
@@ -44,7 +44,10 @@ namespace Scripts.Core
                         default: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
                             break;
                     }
-                    
+                    // Set Tile Rotation
+                    _tilemap.SetTile(pos, tile);
+                    _tilemap.SetTransformMatrix(pos, Matrix4x4.Rotate(Quaternion.Euler(0, 0, rotation)));
+                    _tilemap.RefreshTile(pos);
                 }
             }
             
@@ -52,35 +55,16 @@ namespace Scripts.Core
 
         private Tile GetWallTile(int x, int y, bool isWall)
         {
-            if (x == 0 && y == 0)
-            {
-                return _wallCornerTile.lowerLeftCorner;
-            } else if (x == 0 && y == _layout.GetHeight())
-            {
-                return _wallCornerTile.upperLeftCorner;
-            } else if (x == _layout.GetWidth() && y == 0)
-            {
-                return _wallCornerTile.lowerRightCorner;
+            var isCorner = x == 0 && y == 0 ||
+                           x == 0 && y == _layout.GetHeight() - 1 ||
+                           x == _layout.GetWidth() - 1 && y == 0 ||
+                           x == _layout.GetWidth() - 1 && y == _layout.GetHeight() - 1;
 
-            } else if (x == _layout.GetWidth() && y == _layout.GetHeight())
-            {
-                return _wallCornerTile.upperRightCorner;
-            } else if (x == 0)
-            {
-                return isWall ? _wallTile.leftWallTile : _doorTile.leftDoorTile;
-            }
-            else if (x == _layout.GetWidth())
-            {
-                return isWall ? _wallTile.rightWallTile : _doorTile.rightDoorTile;
-            }
-            else if (y == 0)
-            {
-                return isWall ? _wallTile.lowerWallTile : _doorTile.lowerDoorTile;
-            }
-            else
-            {
-                return isWall ? _wallTile.upperWallTile : _doorTile.upperDoorTile;
-            }
+            if (!isWall)
+                return _doorTile;
+            if (isCorner)
+                return _wallCornerTile;
+            return _wallTile;
         }
 
         private void Awake()
