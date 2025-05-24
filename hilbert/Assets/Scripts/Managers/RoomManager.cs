@@ -1,5 +1,7 @@
 using System;
+using Scripts.Rooms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Scripts.Core.ClassesAndEnums;
 
 namespace Scripts.Managers
@@ -10,6 +12,7 @@ namespace Scripts.Managers
         public static RoomManager Instance;
         public int roomNumber = 0;
         public RoomType roomType = RoomType.RANDOM_ROOM;
+        public RoomLayout layout;
 
         private void Awake()
         {
@@ -31,6 +34,14 @@ namespace Scripts.Managers
         void Start()
         {
         
+            // TODO: Random Rooms, right now only test room
+            layout = new RoomLayout(11, 10);
+            layout.SetTileAt(1, 1, TileType.DOOR);
+            layout.SetTileAt(2, 2, TileType.BLOCKED);
+            layout.SetTileAt(3, 2, TileType.BLOCKED);
+
+            SceneManager.LoadScene("Room");
+
         }
 
         // Update is called once per frame

@@ -8,12 +8,15 @@ namespace Scripts.Core
         {
             RANDOM_ROOM,
             SCRIPTED_ROOM,
+            CORRIDOR
         }
 
         public enum TileType
         {
             FREE,
             BLOCKED,
+            DOOR,
+            WALL
         }
 
         public enum ObjectOverlayType

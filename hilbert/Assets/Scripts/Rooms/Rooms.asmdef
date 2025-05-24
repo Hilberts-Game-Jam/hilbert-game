@@ -1,8 +1,0 @@
-{
-  "name": "Rooms",
-    "rootNamespace": "Scripts.Rooms",
-    "references": [
-        "Core",
-        "Interfaces"
-    ]
-}
