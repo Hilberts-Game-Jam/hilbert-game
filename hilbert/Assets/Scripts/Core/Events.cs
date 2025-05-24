@@ -25,5 +25,21 @@ namespace Core
         {
             OnInteraction?.Invoke(interactionType);
         }
+        
+        // Delegate für den WeirdnessChanged-Event
+        public delegate void WeirdnessChangedEventHandler(int newWeirdnessLevel);
+        
+        // Event, der ausgelöst wird, wenn sich das WeirdnessLevel ändert
+        public static event WeirdnessChangedEventHandler OnWeirdnessChanged;
+        
+        /// <summary>
+        /// Trigger when the weirdness level changes.
+        /// </summary>
+        /// <param name="level">the new weirdness level</param>
+        public static void TriggerWeirdnessChangeEvent(int level)
+        {
+            OnWeirdnessChanged?.Invoke(level);
+        }
+        
     }
 }
