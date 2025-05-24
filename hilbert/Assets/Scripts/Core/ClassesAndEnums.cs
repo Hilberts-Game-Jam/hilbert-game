@@ -24,9 +24,7 @@ namespace Scripts.Core
             NONE,
             DOOR,
             ITEM,
-            WEIRDNESS25,
-            WEIRDNESS50,
-            WEIRDNESS100,
+            ELEVATOR,
         }
         
         public enum KeyObjectType

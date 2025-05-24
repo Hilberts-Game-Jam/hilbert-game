@@ -65,7 +65,9 @@ namespace Scripts.Player
             if (context.performed && _currentInteractable != null)
             {
                 _currentInteractable.OnInteract();
-                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM); // todo: may properly pass a InteractionType if needed
+                
+                // todo: pass correct interaction type for done interaction -> Item, Door, Elevator, etc.
+                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM);
             }
             else
             {
