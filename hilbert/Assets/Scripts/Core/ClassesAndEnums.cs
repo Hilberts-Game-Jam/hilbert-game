@@ -15,26 +15,7 @@ namespace Scripts.Core
             FREE,
             BLOCKED,
         }
-
-        public enum ObjectOverlayType
-        {
-            SWEATSTAINED,
-            BURNED,
-            BROKEN,
-            NONE
-        }
         
-        public enum ObjectType
-        {
-            BED,
-            SHELF,
-            TABLE,
-            CHAIR,
-            MISC,
-            CLOTHES,
-            SUITCASE
-        }
-
         public enum KeyObjectType
         {
             //TODO: Add more key object types as needed
