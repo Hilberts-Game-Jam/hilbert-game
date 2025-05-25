@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 956f851f261791240a8d9fb6f8e971fd
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
-    guid: 6d6223818e3bf7b42aeeab4d6966d4cd
+    guid: d71c49660e7cda44d87b4355316ad051
   - enabled: 1
     path: Assets/Prefabs/Rooms/Room.unity
     guid: 7467e165a13f72b499aa419aa8f4c9a4
-  - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
-    guid: 956f851f261791240a8d9fb6f8e971fd
   - enabled: 1
     path: Assets/Scenes/StartRoom.unity
     guid: 5ed8203ae63437a4f832a194e21d2375
