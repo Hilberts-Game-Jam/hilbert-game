@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834ea4475c19466e8081dfac9c4387cb, type: 3}
+  m_Name: SuitcaseCategory 2
+  m_EditorClassIdentifier: 
+  categoryName: Suitcase
+  variants:
+  - prefab: {fileID: 3169543965684133065, guid: fa3d50e26db79a24d87566e615c38c21, type: 3}
+    spawnWeight: 100
+  - prefab: {fileID: 3169543965684133065, guid: dadd6ed343dc2af429e834e27c43c171, type: 3}
+    spawnWeight: 100
+  - prefab: {fileID: 3169543965684133065, guid: 8a451591d5bf4c04babe4fd0598c354c, type: 3}
+    spawnWeight: 25
+  - prefab: {fileID: 3169543965684133065, guid: c4afc7b6474e6574190384ff549e5470, type: 3}
+    spawnWeight: 0

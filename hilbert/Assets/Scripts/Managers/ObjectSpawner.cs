@@ -1,6 +1,10 @@
+using System;
 using Scripts.Objects;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
+using Events = Core.Events;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Managers
 {
@@ -8,7 +12,24 @@ namespace Scripts.Managers
     {
         [Tooltip("Spawner config ScriptableObject")]
         public ObjectSpawnerConfig spawnerConfig;
+
+        [SerializeField] private List<ObjectSpawnerConfig> _spawnerConfigs;
+
+        private void OnEnable()
+        {
+            Events.OnWeirdnessChanged += OnWeirdnessChanged;
+        }
         
+        private void OnDisable()
+        {
+            Events.OnWeirdnessChanged -= OnWeirdnessChanged;
+        }
+
+        private void OnWeirdnessChanged(int newWeirdnessLevel)
+        {
+            spawnerConfig = _spawnerConfigs[newWeirdnessLevel - 1];
+        }
+
         public GameObject GetRandomVariant(string categoryName)
         {
             if (spawnerConfig == null || spawnerConfig.objectCategories == null) return null;

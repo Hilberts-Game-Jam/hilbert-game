@@ -32,6 +32,8 @@ namespace Scripts.Player
         }
         
         private void OnEnable()
+        [SerializeField] private GameObject _doorInteractablePrefab;
+        [SerializeField] private GameObject _elevatorInteractablePrefab;
         {
             InputManager.UsePressed += HandleUse;
         }
@@ -48,9 +50,18 @@ namespace Scripts.Player
         
         public void OnUse(InputAction.CallbackContext context)
         {
+            
             if (context.performed && _currentInteractable != null)
             {
                 _currentInteractable.OnInteract();
+                
+                // todo: pass correct interaction type for done interaction -> Item, Door, Elevator, etc.
+                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM);
+            }
+            else
+            {
+                // Event for NONE interaction type interaction
+                Events.TriggerInteraction();
             }
         }
         

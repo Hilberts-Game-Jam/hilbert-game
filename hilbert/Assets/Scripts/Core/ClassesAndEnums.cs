@@ -7,13 +7,27 @@ namespace Scripts.Core
         public enum RoomType
         {
             RANDOM_ROOM,
-            SCRIPTED_ROOM
+            SCRIPTED_ROOM,
+            CORRIDOR
         }
 
         public enum TileType
         {
             FREE,
             BLOCKED,
+            DOOR,
+            WALL
+        }
+        
+        /// <summary>
+        /// Used to specify the type of interaction that the player is performing.
+        /// </summary>
+        public enum InteractionType
+        {
+            NONE,
+            DOOR,
+            ITEM,
+            ELEVATOR,
         }
         
         public enum KeyObject

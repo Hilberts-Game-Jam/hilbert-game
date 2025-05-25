@@ -15,14 +15,15 @@ namespace Scripts.Rooms
             _width = width;
             _height = height;
 
-            // Initialize TileMap and filling it with free tiles
+            // Initialize TileMap and filling it with free tiles and walls
             _tileMap = new TileType[_width, _height];
 
             for (int i = 0; i < _tileMap.GetLength(0); i++)
             {
                 for (int j = 0; j < _tileMap.GetLength(1); j++)
                 {
-                    _tileMap[i, j] = TileType.FREE;
+                    if (i == 0 || i == _width - 1 || j == 0 || j == _height - 1) _tileMap[i, j] = TileType.WALL;
+                    else _tileMap[i, j] = TileType.FREE;
                 }
             }
         }
@@ -30,6 +31,16 @@ namespace Scripts.Rooms
         public TileType GetTileAt(int x, int y)
         {
             return _tileMap[x, y];
+        }
+
+        public int GetWidth()
+        {
+            return _width;
+        }
+
+        public int GetHeight()
+        {
+            return _height;
         }
 
         public void SetTileAt(int x, int y, TileType tile)
