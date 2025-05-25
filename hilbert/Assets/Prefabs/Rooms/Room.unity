@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 64218240}
   - component: {fileID: 64218242}
   - component: {fileID: 64218241}
+  - component: {fileID: 64218243}
   m_Layer: 0
   m_Name: RoomTileMap
   m_TagString: Untagged
@@ -266,6 +267,44 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &64218243
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64218239}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1001 &106236492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,6 +365,11 @@ PrefabInstance:
 --- !u!4 &106236493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 907952996841468230, guid: b6b98311b7df406499ae887f89a4c263, type: 3}
+  m_PrefabInstance: {fileID: 106236492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &106236494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2330241422161204684, guid: b6b98311b7df406499ae887f89a4c263, type: 3}
   m_PrefabInstance: {fileID: 106236492}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &112209186
@@ -579,11 +623,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tilemap: {fileID: 64218242}
+  _tilemap_collider: {fileID: 64218243}
   _wallTile: {fileID: 11400000, guid: b399cbb68e4a7698887217dfc0a21761, type: 2}
   _wallCornerTile: {fileID: 11400000, guid: 7f6379cc656c550a287817bc2e4eedf5, type: 2}
   _floorTile: {fileID: 11400000, guid: 2b2466c786e10ef71b4cb35e34ce9261, type: 2}
+  _colliding_floorTile: {fileID: 11400000, guid: 416aa94bb8b33074e807fc6bda3b1972, type: 2}
   _doorTile: {fileID: 11400000, guid: 192ade61cff6ec6f6b9a5d509fbf0d40, type: 2}
   _blockedTile: {fileID: 11400000, guid: 403d71f52883e244db1d98c4f18afcc1, type: 2}
+  _doorInteractiblePrefab: {fileID: 6605335748123785305, guid: 74446e4d1c2f2704484d3b4550bc8c75, type: 3}
+  _playerObject: {fileID: 106236494}
 --- !u!4 &864714488
 Transform:
   m_ObjectHideFlags: 0
