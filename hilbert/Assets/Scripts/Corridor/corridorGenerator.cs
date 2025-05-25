@@ -69,14 +69,14 @@ namespace Scripts.Corridor
 
                     if (rand3 < 5) // 5% chance for Elevator
                     {
-                        Vector3Int elevatorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), 3, 0);
+                        Vector3Int elevatorPosition = new Vector3Int(x , 3, 0);
                         corridorTilemap.SetTile(elevatorPosition, _elevatorUpper);
                         Vector3 worldPos = corridorTilemap.CellToWorld(elevatorPosition) + new Vector3(0.5f, 0.5f, 0);
                         Instantiate(_elevatorInteractablePrefab, worldPos, Quaternion.identity);
                     }
                     else // rest of the chances are Doors
                     {
-                        Vector3Int doorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), 3, 0);
+                        Vector3Int doorPosition = new Vector3Int(x , 3, 0);
                         corridorTilemap.SetTile(doorPosition, _doorUpper);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
                         GameObject door = Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
@@ -86,14 +86,14 @@ namespace Scripts.Corridor
 
                     if (rand4 < 5) // Im once again asking your for 5% elevator access 
                     {
-                        Vector3Int elevatorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), -3, 0);
+                        Vector3Int elevatorPosition = new Vector3Int(x , -3, 0);
                         corridorTilemap.SetTile(elevatorPosition, _elevatorBottom);
                         Vector3 worldPos = corridorTilemap.CellToWorld(elevatorPosition) + new Vector3(0.5f, 0.5f, 0);
                         Instantiate(_elevatorInteractablePrefab, worldPos, Quaternion.identity);
                     }
                     else // rest of the chances are Doors
                     {
-                        Vector3Int doorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), -3, 0);
+                        Vector3Int doorPosition = new Vector3Int(x , -3, 0);
                         corridorTilemap.SetTile(doorPosition, _doorBottom);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
                         GameObject door = Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
