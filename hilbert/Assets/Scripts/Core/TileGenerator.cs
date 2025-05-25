@@ -21,7 +21,7 @@ namespace Scripts.Core
         [SerializeField] private Tile _floorTile;
         [SerializeField] private Tile _doorTile;
         [SerializeField] private Tile _blockedTile;
-        [SerializeField] private GameObject _playerObj;
+        //[SerializeField] private GameObject _playerObj;
         private RoomType _type;
         private Vector2Int _spawnPoint;
         
@@ -30,7 +30,7 @@ namespace Scripts.Core
         {
 
             _spawnPoint = RoomManager.Instance.spawn_pos;
-            Instantiate(_playerObj, new Vector3(_spawnPoint.x, _spawnPoint.y, 0), Quaternion.identity);
+            //Instantiate(_playerObj, new Vector3(_spawnPoint.x, _spawnPoint.y, 0), Quaternion.identity);
             
             // Building the tiles
             for (int i = 0; i < _layout.GetWidth(); i++)
