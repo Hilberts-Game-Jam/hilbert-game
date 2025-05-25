@@ -1,64 +1,53 @@
-using System;
-using Core;
+using System.Collections.Generic;
 using Scripts.Core;
+using Scripts.Input;
+using Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Scripts.Interfaces;
 
 namespace Scripts.Player
 {
-    public class Player : MonoBehaviour, PlayerControls.IPlayerActions
+    public class Player : MonoBehaviour
     {
-        [Header("Movement")] 
-        [SerializeField] private float _movementSpeed;
-        [Header("Rigid Body")]
-        [SerializeField] private Rigidbody2D _rb;
-        [Header("Collider")]
-        [SerializeField] private Collider2D _collider;
-
-        [SerializeField] private Animator _playerAnimator;
+        private static readonly int MoveX = Animator.StringToHash("MoveX");
+        private static readonly int MoveY = Animator.StringToHash("MoveY");
+        private static readonly int Speed = Animator.StringToHash("Speed");
+        [SerializeField] private float _movementSpeed = 5f;
         
-        private PlayerControls _controls;
-        private Vector2 _moveInput;
+        private Vector2 _movement;
+        
+        private Rigidbody2D _rb;
+        private Animator _playerAnimator;
+        private Collider2D _collider;
+        
         private IInteractable _currentInteractable;
         
-        // Called before everything else
+        public Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
+        
         private void Awake()
         {
-            _controls = new PlayerControls();
-            _controls.Player.SetCallbacks(this);
+            _rb = GetComponent<Rigidbody2D>();
+            _playerAnimator = GetComponent<Animator>();
+            _collider = GetComponent<Collider2D>();
         }
-
-        private void OnEnable() => _controls.Player.Enable();
-        private void OnDisable() => _controls.Player.Disable();
-
-        private void Update()
+        
+        private void OnEnable()
+        [SerializeField] private GameObject _doorInteractablePrefab;
+        [SerializeField] private GameObject _elevatorInteractablePrefab;
         {
-            _playerAnimator.SetFloat("Speed", _moveInput.magnitude);
+            InputManager.UsePressed += HandleUse;
         }
 
-        public void OnMove(InputAction.CallbackContext context)
+        private void OnDisable()
         {
-            if (context.performed)
-            {
-                _moveInput = context.ReadValue<Vector2>().normalized;
-                float zRotation = transform.rotation.eulerAngles.z;
-                if (_moveInput.y > 0 && Mathf.Abs(_moveInput.x) < 0.1f)
-                    zRotation = 180;
-                else if (_moveInput.y < 0 && Mathf.Abs(_moveInput.x) < 0.1f)
-                    zRotation = 0;
-                else if (_moveInput.x < 0 && Mathf.Abs(_moveInput.y) < 0.1f)
-                    zRotation = -90;
-                else if (_moveInput.x > 0 && Mathf.Abs(_moveInput.y) < 0.1f)
-                    zRotation = 90;
-
-                transform.rotation = Quaternion.Euler(0, 0, zRotation);
-            }
-            else if (context.canceled)
-            {
-                _moveInput = Vector2.zero;
-            }
+            InputManager.UsePressed -= HandleUse;
         }
+
+        private void HandleUse()
+        {
+            OnUse(new InputAction.CallbackContext());
+        }
+        
         public void OnUse(InputAction.CallbackContext context)
         {
             
@@ -75,16 +64,26 @@ namespace Scripts.Player
                 Events.TriggerInteraction();
             }
         }
-
-        // Called in sync with physics engine, all physics related stuff in here!
-        private void FixedUpdate()
+        
+        private void Update()
         {
-            if (_rb != null)
+            _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
+            
+            _rb.linearVelocity = _movement * _movementSpeed;
+            
+            if (_playerAnimator != null)
             {
-                _rb.MovePosition(_rb.position + _moveInput * (_movementSpeed * Time.fixedDeltaTime));
+                _playerAnimator.SetFloat(MoveX, _movement.x);
+                _playerAnimator.SetFloat(MoveY, _movement.y);
+                _playerAnimator.SetFloat(Speed, _movement.SqrMagnitude());
+            }
+            if (_movement != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle + 90);
             }
         }
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             var interactable = other.GetComponent<IInteractable>();
@@ -104,4 +103,3 @@ namespace Scripts.Player
         }
     }
 }
-

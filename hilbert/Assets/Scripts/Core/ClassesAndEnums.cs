@@ -30,9 +30,9 @@ namespace Scripts.Core
             ELEVATOR,
         }
         
-        public enum KeyObjectType
+        public enum KeyObject
         {
-            //TODO: Add more key object types as needed
+            MIRROR_SHARD
         }
         
         public static class D20
