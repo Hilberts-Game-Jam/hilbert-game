@@ -10,6 +10,23 @@ namespace Scripts.Managers
 {
     public class ObjectSpawner : MonoBehaviour
     {
+
+        public static ObjectSpawner Instance;
+
+        private void Awake()
+        {
+            if (Instance)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(Instance);
+            }
+            
+        }
+
         [Tooltip("Spawner config ScriptableObject")]
         public ObjectSpawnerConfig spawnerConfig;
 

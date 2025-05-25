@@ -34,6 +34,51 @@ namespace Scripts.Core
         {
             MIRROR_SHARD
         }
+
+        public class FurnitureObjectInfo
+        {
+
+            private int _x_start;
+            private int _y_start;
+            private int _x_end;
+            private int _y_end;
+            private string _name;
+            
+            public FurnitureObjectInfo(int x_start, int x_end, int y_start, int y_end, string name)
+            {
+                _x_start = x_start;
+                _y_start = y_start;
+                _x_end = x_end;
+                _y_end = y_end;
+                _name = name;
+            }
+
+            public int GetXStart()
+            {
+                return _x_start;
+            }
+            
+            public int GetYStart()
+            {
+                return _y_start;
+            }
+            
+            public int GetXEnd()
+            {
+                return _x_end;
+            }
+            
+            public int GetYEnd()
+            {
+                return _y_end;
+            }
+
+            public string GetName()
+            {
+                return _name;
+            }
+            
+        }
         
         public static class D20
         {

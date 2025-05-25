@@ -48,6 +48,12 @@ namespace Scripts.Rooms
             _tileMap[x, y] = tile;
         }
 
+        public bool CoordsExist(int x, int y)
+        {
+            if (x < 0 || x > _width || y < 0 || y > _height) return false;
+            return true;
+        }
+
         public void PrintMap()
         {
             string result = "";
@@ -63,12 +69,21 @@ namespace Scripts.Rooms
                         case TileType.FREE:
                             result = result + "F";
                             break;
+                        case TileType.DOOR:
+                            result = result + "D";
+                            break;
+                        case TileType.WALL:
+                            result = result + "W";
+                            break;
                         default:
                             result = result + "E";
                             break;
                     }
                 }
+
+                result = result + "\n";
             }
+            Debug.Log(result);
         }
 
     }

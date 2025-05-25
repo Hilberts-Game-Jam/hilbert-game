@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834ea4475c19466e8081dfac9c4387cb, type: 3}
   m_Name: CouchCategory 1
   m_EditorClassIdentifier: 
-  categoryName: Chest
+  categoryName: Couch
   variants:
   - prefab: {fileID: 3169543965684133065, guid: ddcaa8bf9cdcb1345b1b5433e921ea3a, type: 3}
     spawnWeight: 100
