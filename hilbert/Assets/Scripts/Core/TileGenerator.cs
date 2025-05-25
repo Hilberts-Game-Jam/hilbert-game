@@ -18,13 +18,15 @@ namespace Scripts.Core
         [SerializeField] private Tile _wallCornerTile;
         [SerializeField] private Tile _floorTile;
         [SerializeField] private Tile _doorTile;
-        //[SerializeField] private Tile _blockedTile;
+        [SerializeField] private Tile _blockedTile;
         private RoomType _type;
         private Vector2Int _spawnPoint;
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+
+            _spawnPoint = RoomManager.Instance.spawn_pos;
             
             // Building the tiles
             for (int i = 0; i < _layout.GetWidth(); i++)
@@ -38,10 +40,9 @@ namespace Scripts.Core
                             break;
                         case TileType.DOOR: 
                             _tilemap.SetTile(new Vector3Int(i, j), GetWallTile(i,j, false));
-                            
                             break;
-                        //case TileType.BLOCKED: _tilemap.SetTile(new Vector3Int(i, j), _blockedTile);
-                            //break;
+                        case TileType.BLOCKED: _tilemap.SetTile(new Vector3Int(i, j), _blockedTile);
+                            break;
                         case TileType.FREE: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
                             break;
                         default: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
