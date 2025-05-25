@@ -3,7 +3,7 @@ using Scripts.Objects;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
-using Events = Core.Events;
+using Events = Scripts.Core.Events;
 using Random = UnityEngine.Random;
 
 namespace Scripts.Managers

@@ -3,7 +3,7 @@ using Scripts.Core;
 using static Scripts.Core.ClassesAndEnums;
 using UnityEngine;
 
-namespace Core
+namespace Scripts.Core
 {
     public class Events
     {

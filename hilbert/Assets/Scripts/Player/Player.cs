@@ -32,8 +32,6 @@ namespace Scripts.Player
         }
         
         private void OnEnable()
-        [SerializeField] private GameObject _doorInteractablePrefab;
-        [SerializeField] private GameObject _elevatorInteractablePrefab;
         {
             InputManager.UsePressed += HandleUse;
         }
