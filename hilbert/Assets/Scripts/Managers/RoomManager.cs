@@ -103,28 +103,53 @@ namespace Scripts.Managers
             if (random.Next(0, 2) == 1) // Double bed
             {
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++) // Try 10 times
                 {
                     FurnitureObjectInfo newObstacle = TryPlaceObject("DoubleBed");
                     if (newObstacle != null)
                     {
                         furniture_objects.Add(newObstacle);
+                        break;
                     }
                 }
             }
             else // bed
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 10; i++) // Try 10 times
                 {
                     FurnitureObjectInfo newObstacle = TryPlaceObject("Bed");
                     if (newObstacle != null)
                     {
                         furniture_objects.Add(newObstacle);
+                        break;
                     }
                 }
                 
             }
             
+            // Adding other random furniture
+            int amountObj = random.Next(2, 8);
+
+            for (int i = 0; i < amountObj; i++)
+            {
+
+                for (int j = 0; j < 10; j++) // Try 10 times
+                {
+                    
+                    // Select a random category
+                    int categoryInd = random.Next(0, 5);
+                    FurnitureObjectInfo newFurniture = TryPlaceObject(possibleObjects[categoryInd]);
+
+                    if (newFurniture != null)
+                    {
+                        furniture_objects.Add(newFurniture);
+                        break;
+                    }
+
+                }
+                
+            }
+
         }
 
         private FurnitureObjectInfo TryPlaceObject(string name)
