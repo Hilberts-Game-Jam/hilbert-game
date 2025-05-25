@@ -3,7 +3,7 @@ using UnityEngine;
 using Scripts.Interfaces;
 using Scripts.Managers;
 
-namespace Corridor {
+namespace Scripts.Corridor {
     public class InteractableElevator : MonoBehaviour, IInteractable
     {
         private AudioManager _audioManager;

@@ -5,7 +5,7 @@ using Scripts.Interfaces;
 using Scripts.Managers;
 using UnityEngine.SceneManagement;
 
-namespace Corridor {
+namespace Scripts.Corridor {
     public class InteractableDoor : MonoBehaviour, IInteractable
     {
         public String leadsTo;

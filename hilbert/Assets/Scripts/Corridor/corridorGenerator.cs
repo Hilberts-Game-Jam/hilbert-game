@@ -1,10 +1,8 @@
 using UnityEngine;
-using Scripts.Player;
-using System.Runtime.CompilerServices;
 using UnityEngine.Tilemaps;
 using Scripts.Managers;
 
-namespace Corridor
+namespace Scripts.Corridor
 {
     public class corridorGenerator : MonoBehaviour
     {
