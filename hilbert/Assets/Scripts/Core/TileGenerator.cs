@@ -16,9 +16,11 @@ namespace Scripts.Core
 
         private RoomLayout _layout;
         [SerializeField] private Tilemap _tilemap;
+        [SerializeField] private TilemapCollider2D _tilemap_collider;
         [SerializeField] private Tile _wallTile;
         [SerializeField] private Tile _wallCornerTile;
         [SerializeField] private Tile _floorTile;
+        [SerializeField] private Tile _colliding_floorTile;
         [SerializeField] private Tile _doorTile;
         [SerializeField] private Tile _blockedTile;
         //[SerializeField] private GameObject _playerObj;
@@ -45,7 +47,9 @@ namespace Scripts.Core
                         case TileType.DOOR: 
                             _tilemap.SetTile(new Vector3Int(i, j), GetWallTile(i,j, false));
                             break;
-                        case TileType.BLOCKED: _tilemap.SetTile(new Vector3Int(i, j), _blockedTile);
+                        case TileType.BLOCKED: 
+                            _tilemap.SetTile(new Vector3Int(i, j), _colliding_floorTile);
+                            _tilemap.SetColliderType(new Vector3Int(i, j), Tile.ColliderType.Sprite);
                             break;
                         case TileType.FREE: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
                             break;
