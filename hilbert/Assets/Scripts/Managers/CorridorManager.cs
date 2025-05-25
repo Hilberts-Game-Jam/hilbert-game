@@ -8,6 +8,7 @@ namespace Scripts.Managers
     {
         [SerializeField] private corridorGenerator _corridorGen;
         [SerializeField] private int _chunkWidth = 10; // Width of corridor Chunk
+
         private HashSet<int> _generatedChunks = new HashSet<int>();
         private Transform _playerTransform;
 
@@ -36,36 +37,25 @@ namespace Scripts.Managers
 
             int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
 
-            for (int offset = -1; offset <= 1; offset++)
+            for (int offset = -2; offset <= 2; offset++)
             {
-                int chunkToCheckRight = currentChunk + offset;
-                if (!_generatedChunks.Contains(chunkToCheckRight))
+                int chunkToCheck = currentChunk + offset;
+                if (!_generatedChunks.Contains(chunkToCheck))
                 {
                     Debug.Log("Chunk generated");
-                    _corridorGen.generateCorridor(chunkToCheckRight * _chunkWidth);
-                    _generatedChunks.Add(chunkToCheckRight);
-                    if (_generatedChunks.Contains(chunkToCheckRight - 3))
+                    _corridorGen.generateCorridor(chunkToCheck * _chunkWidth);
+                    _generatedChunks.Add(chunkToCheck);
+                    if (_generatedChunks.Contains(chunkToCheck - 5))
                     {
-                        _corridorGen.destroyCorridor((chunkToCheckRight - 3) * _chunkWidth);
-                        _generatedChunks.Remove(chunkToCheckRight - 3);
+                        _corridorGen.destroyCorridor((chunkToCheck - 5) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheck - 5);
                     }
-                    if (_generatedChunks.Contains(chunkToCheckRight + 3))
+                    if (_generatedChunks.Contains(chunkToCheck + 5))
                     {
-                        _corridorGen.destroyCorridor((chunkToCheckRight + 3) * _chunkWidth);
-                        _generatedChunks.Remove(chunkToCheckRight + 3);
+                        _corridorGen.destroyCorridor((chunkToCheck + 5) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheck + 5);
                     }                   
                 }
-            }
-        }
-
-        private void GenerateChunkAtPlayer()
-        {
-            if (_playerTransform == null) return;
-            int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
-            if (!_generatedChunks.Contains(currentChunk))
-            {
-                _corridorGen.generateCorridor(currentChunk);
-                _generatedChunks.Add(currentChunk);
             }
         }
     }
