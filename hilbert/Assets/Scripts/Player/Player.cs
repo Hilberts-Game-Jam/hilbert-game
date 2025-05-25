@@ -22,6 +22,7 @@ namespace Scripts.Player
         private Rigidbody2D _rb;
         private Animator _playerAnimator;
         private AudioSource _footStepSource;
+        [SerializeField][Range(0f,1f)] float _footStepVolume = 0.2f;
         
         private IInteractable _currentInteractable;
         
@@ -62,16 +63,16 @@ namespace Scripts.Player
         private IEnumerator FadeInFootstepVolume()
         {
             float timeElapsed = 0f;
-            float duration = 2f; // Duration for the fade-in
+            float duration = 1f; // Duration for the fade-in
 
             while (timeElapsed < duration)
             {
-                _footStepSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / duration);
+                _footStepSource.volume = Mathf.Lerp(0f, _footStepVolume, (float) (timeElapsed / duration));
                 timeElapsed += Time.deltaTime;
                 yield return null; // Wait for the next frame
             }
 
-            _footStepSource.volume = 1f; // Ensure the volume is set to 1 at the end
+            _footStepSource.volume = _footStepVolume; // Ensure the volume is set to max at the end
         }
         
         private void Update()
