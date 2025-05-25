@@ -1,9 +1,12 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Scripts.Core;
 using Scripts.Input;
 using Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Player
 {
@@ -18,7 +21,7 @@ namespace Scripts.Player
         
         private Rigidbody2D _rb;
         private Animator _playerAnimator;
-        private Collider2D _collider;
+        private AudioSource _footStepSource;
         
         private IInteractable _currentInteractable;
         
@@ -28,7 +31,8 @@ namespace Scripts.Player
         {
             _rb = GetComponent<Rigidbody2D>();
             _playerAnimator = GetComponent<Animator>();
-            _collider = GetComponent<Collider2D>();
+            _footStepSource = GetComponent<AudioSource>();
+            _footStepSource.volume = 0f;
         }
         
         private void OnEnable()
@@ -52,22 +56,29 @@ namespace Scripts.Player
             if (context.performed && _currentInteractable != null)
             {
                 _currentInteractable.OnInteract();
-                
-                // todo: pass correct interaction type for done interaction -> Item, Door, Elevator, etc.
-                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM);
             }
-            else
+        }
+        
+        private IEnumerator FadeInFootstepVolume()
+        {
+            float timeElapsed = 0f;
+            float duration = 2f; // Duration for the fade-in
+
+            while (timeElapsed < duration)
             {
-                // Event for NONE interaction type interaction
-                Events.TriggerInteraction();
+                _footStepSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / duration);
+                timeElapsed += Time.deltaTime;
+                yield return null; // Wait for the next frame
             }
+
+            _footStepSource.volume = 1f; // Ensure the volume is set to 1 at the end
         }
         
         private void Update()
         {
             _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
             
-            _rb.linearVelocity = _movement * _movementSpeed;
+            _rb.linearVelocity = _movement.normalized * _movementSpeed;
             
             if (_playerAnimator != null)
             {
@@ -77,8 +88,22 @@ namespace Scripts.Player
             }
             if (_movement != Vector2.zero)
             {
+                if (!_footStepSource.isPlaying)
+                {
+                    _footStepSource.pitch = Random.Range(0.8f, 1.2f);
+                    _footStepSource.Play();
+                    StartCoroutine(FadeInFootstepVolume());
+                }
                 float angle = Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+            } else
+            {
+                if (_footStepSource.isPlaying)
+                {
+                    _footStepSource.Stop();
+                    _footStepSource.volume = 0f;
+                    StopAllCoroutines();
+                }
             }
         }
         
