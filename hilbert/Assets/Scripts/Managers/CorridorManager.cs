@@ -1,20 +1,62 @@
 using UnityEngine;
 using Corridor;
+using System.Collections.Generic;
 
 namespace Scripts.Managers
 {
     public class CorridorManager : MonoBehaviour
     {
+        [SerializeField] private corridorGenerator _corridorGen;
+        [SerializeField] private int _chunkWidth = 10; // Width of corridor Chunk
+
+        private HashSet<int> _generatedChunks = new HashSet<int>();
+        private Transform _playerTransform;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            corridorGenerator.generateCorridor();
+            GameObject player = GameObject.Find("Player");
+            if (player == null)
+            {
+                Debug.LogError("Player GameObject not found!");
+                return;
+            }
+
+            _playerTransform = player.transform; // <-- FIX: assign playerTransform!
+
+            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
+            int startChunk = Mathf.FloorToInt(playerPosition_x / _chunkWidth);
+            _corridorGen.generateCorridor(startChunk * _chunkWidth); // generate initial chunk
+            _generatedChunks.Add(startChunk);
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            if (_playerTransform == null) return;
+
+            int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
+
+            for (int offset = -2; offset <= 2; offset++)
+            {
+                int chunkToCheck = currentChunk + offset;
+                if (!_generatedChunks.Contains(chunkToCheck))
+                {
+                    Debug.Log("Chunk generated");
+                    _corridorGen.generateCorridor(chunkToCheck * _chunkWidth);
+                    _generatedChunks.Add(chunkToCheck);
+                    if (_generatedChunks.Contains(chunkToCheck - 5))
+                    {
+                        _corridorGen.destroyCorridor((chunkToCheck - 5) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheck - 5);
+                    }
+                    if (_generatedChunks.Contains(chunkToCheck + 5))
+                    {
+                        _corridorGen.destroyCorridor((chunkToCheck + 5) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheck + 5);
+                    }                   
+                }
+            }
         }
     }
 }

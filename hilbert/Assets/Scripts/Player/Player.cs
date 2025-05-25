@@ -1,96 +1,116 @@
 using System;
-using Core;
+using System.Collections;
+using System.Collections.Generic;
 using Scripts.Core;
+using Scripts.Input;
+using Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Scripts.Interfaces;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Player
 {
-    public class Player : MonoBehaviour, PlayerControls.IPlayerActions
+    public class Player : MonoBehaviour
     {
-        [Header("Movement")] 
-        [SerializeField] private float _movementSpeed;
-        [Header("Rigid Body")]
-        [SerializeField] private Rigidbody2D _rb;
-        [Header("Collider")]
-        [SerializeField] private Collider2D _collider;
-
-        [SerializeField] private Animator _playerAnimator;
+        private static readonly int MoveX = Animator.StringToHash("MoveX");
+        private static readonly int MoveY = Animator.StringToHash("MoveY");
+        private static readonly int Speed = Animator.StringToHash("Speed");
+        [SerializeField] private float _movementSpeed = 5f;
         
-        private PlayerControls _controls;
-        private Vector2 _moveInput;
+        private Vector2 _movement;
+        
+        private Rigidbody2D _rb;
+        private Animator _playerAnimator;
+        private AudioSource _footStepSource;
+        [SerializeField][Range(0f,1f)] float _footStepVolume = 0.2f;
+        
         private IInteractable _currentInteractable;
         
-        // Called before everything else
+        public Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
+        
         private void Awake()
         {
-            _controls = new PlayerControls();
-            _controls.Player.SetCallbacks(this);
+            _rb = GetComponent<Rigidbody2D>();
+            _playerAnimator = GetComponent<Animator>();
+            _footStepSource = GetComponent<AudioSource>();
+            _footStepSource.volume = 0f;
         }
-
-        private void OnEnable() => _controls.Player.Enable();
-        private void OnDisable() => _controls.Player.Disable();
-
-        private void Update()
+        
+        private void OnEnable()
         {
-            _playerAnimator.SetFloat("Speed", _moveInput.magnitude);
+            InputManager.UsePressed += HandleUse;
         }
 
-        public void OnMove(InputAction.CallbackContext context)
+        private void OnDisable()
         {
-            if (context.performed)
-            {
-                _moveInput = context.ReadValue<Vector2>().normalized;
-                float zRotation = transform.rotation.eulerAngles.z;
-                if (_moveInput.y > 0 && Mathf.Abs(_moveInput.x) < 0.1f)
-                    zRotation = 180;
-                else if (_moveInput.y < 0 && Mathf.Abs(_moveInput.x) < 0.1f)
-                    zRotation = 0;
-                else if (_moveInput.x < 0 && Mathf.Abs(_moveInput.y) < 0.1f)
-                    zRotation = -90;
-                else if (_moveInput.x > 0 && Mathf.Abs(_moveInput.y) < 0.1f)
-                    zRotation = 90;
-
-                transform.rotation = Quaternion.Euler(0, 0, zRotation);
-            }
-            else if (context.canceled)
-            {
-                _moveInput = Vector2.zero;
-            }
+            InputManager.UsePressed -= HandleUse;
         }
+
+        private void HandleUse()
+        {
+            OnUse(new InputAction.CallbackContext());
+        }
+        
         public void OnUse(InputAction.CallbackContext context)
         {
-            
-            if (context.performed && _currentInteractable != null)
-            {
-                _currentInteractable.OnInteract();
-                
-                // todo: pass correct interaction type for done interaction -> Item, Door, Elevator, etc.
-                Events.TriggerInteraction(ClassesAndEnums.InteractionType.ITEM);
-            }
-            else
-            {
-                // Event for NONE interaction type interaction
-                Events.TriggerInteraction();
-            }
+            _currentInteractable?.OnInteract();
         }
-
-        // Called in sync with physics engine, all physics related stuff in here!
-        private void FixedUpdate()
+        
+        private IEnumerator FadeInFootstepVolume()
         {
-            if (_rb != null)
+            float timeElapsed = 0f;
+            float duration = 1f; // Duration for the fade-in
+
+            while (timeElapsed < duration)
             {
-                _rb.MovePosition(_rb.position + _moveInput * (_movementSpeed * Time.fixedDeltaTime));
+                _footStepSource.volume = Mathf.Lerp(0f, _footStepVolume, (float) (timeElapsed / duration));
+                timeElapsed += Time.deltaTime;
+                yield return null; // Wait for the next frame
+            }
+
+            _footStepSource.volume = _footStepVolume; // Ensure the volume is set to max at the end
+        }
+        
+        private void Update()
+        {
+            _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
+            
+            _rb.linearVelocity = _movement.normalized * _movementSpeed;
+            
+            if (_playerAnimator != null)
+            {
+                _playerAnimator.SetFloat(MoveX, _movement.x);
+                _playerAnimator.SetFloat(MoveY, _movement.y);
+                _playerAnimator.SetFloat(Speed, _movement.SqrMagnitude());
+            }
+            if (_movement != Vector2.zero)
+            {
+                if (!_footStepSource.isPlaying)
+                {
+                    _footStepSource.pitch = Random.Range(0.8f, 1.2f);
+                    _footStepSource.Play();
+                    StartCoroutine(FadeInFootstepVolume());
+                }
+                float angle = Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle + 90);
+            } else
+            {
+                if (_footStepSource.isPlaying)
+                {
+                    _footStepSource.Stop();
+                    _footStepSource.volume = 0f;
+                    StopAllCoroutines();
+                }
             }
         }
-
+        
         private void OnTriggerEnter2D(Collider2D other)
         {
             var interactable = other.GetComponent<IInteractable>();
             if (interactable != null)
             {
                 _currentInteractable = interactable;
+                Debug.Log(interactable);
             }
         }
 
@@ -100,8 +120,8 @@ namespace Scripts.Player
             if (interactable != null && interactable == _currentInteractable)
             {
                 _currentInteractable = null;
+                Debug.Log("Exited interactable: " + interactable);
             }
         }
     }
 }
-
