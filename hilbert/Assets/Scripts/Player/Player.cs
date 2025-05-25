@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Scripts.Core;
 using Scripts.Input;
 using Scripts.Interfaces;
 using UnityEngine;
@@ -5,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace Scripts.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         private static readonly int MoveX = Animator.StringToHash("MoveX");
         private static readonly int MoveY = Animator.StringToHash("MoveY");
@@ -19,6 +21,8 @@ namespace Scripts.Player
         private Collider2D _collider;
         
         private IInteractable _currentInteractable;
+        
+        public Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
         
         private void Awake()
         {
