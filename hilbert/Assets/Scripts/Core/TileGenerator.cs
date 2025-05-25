@@ -48,12 +48,35 @@ namespace Scripts.Core
                         default: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
                             break;
                     }
-                    // Set Tile Rotation
+                    
+                    SetRotationOfTileAtPosition(i ,j);
                 }
             }
             
         }
 
+        private void SetRotationOfTileAtPosition(int i, int j)
+        {
+            int width = _layout.GetWidth();
+            int height = _layout.GetHeight();
+            int rotationAngle = 0;
+
+            // Ecken
+            if (i == 0 && j == 0) rotationAngle = 180; // unten links
+            else if (i == 0 && j == height - 1) rotationAngle = 90; // unten rechts
+            else if (i == width - 1 && j == 0) rotationAngle = 270; // oben links
+            else if (i == width - 1 && j == height - 1) rotationAngle = 0; // oben rechts
+
+            // Kanten (aber nicht Ecken)
+            else if (i == 0) rotationAngle = 90; // untere Wand / Türe
+            else if (i == width - 1) rotationAngle = 270; // untere Wand / Türe
+            else if (j == 0) rotationAngle = 180; // untere Wand / Türe
+            else if (j == height - 1) rotationAngle = 0; // untere Wand / Türe
+
+            _tilemap.SetTransformMatrix(new Vector3Int(i, j, 0), Matrix4x4.Rotate(Quaternion.Euler(0, 0, rotationAngle)));
+            _tilemap.RefreshTile(new Vector3Int(i, j, 0));
+        }
+            
         private Tile GetWallTile(int x, int y, bool isWall)
         {
             var isCorner = x == 0 && y == 0 ||
