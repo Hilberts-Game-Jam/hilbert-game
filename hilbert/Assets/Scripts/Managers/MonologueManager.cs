@@ -111,12 +111,26 @@ namespace Scripts.Managers
 
         private void OnEnable()
         {
-            Events.OnInteraction += DisplayDialog;
+            Events.OnInteraction += OnInteraction;
+            
         }
 
         private void OnDisable()
         {
-            Events.OnInteraction -= DisplayDialog;
+            Events.OnInteraction -= OnInteraction;
+        }
+        
+        private void OnInteraction(ClassesAndEnums.InteractionType interactionType)
+        {
+
+            if (interactionType == ClassesAndEnums.InteractionType.DOOR)
+            {
+                CloseDialog();
+            }
+            else
+            {
+                DisplayDialog(interactionType);
+            }
         }
 
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
@@ -308,11 +322,12 @@ namespace Scripts.Managers
             yield return new WaitForSeconds(dialogDuration);
             CloseDialog();
         }
+        
 
         /// <summary>
         /// Closes the current monologue dialog if it exists.
         /// </summary>
-        public void CloseDialog()
+        private void CloseDialog()
         {
             if (_currentDialogInstance != null)
             {
