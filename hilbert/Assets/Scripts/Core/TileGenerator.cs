@@ -125,6 +125,9 @@ namespace Scripts.Core
 
         private void Awake()
         {
+            
+            Managers.RoomManager.Instance.GenerateNewRoom();
+            
             // Receiving room layout from RoomManager
             _layout = Managers.RoomManager.Instance.layout;
             _type = Managers.RoomManager.Instance.roomType;
