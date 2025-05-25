@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Core
@@ -25,6 +26,8 @@ namespace Scripts.Core
         // todo: make this enum better
         public enum InteractionType
         {
+            NONE,
+            
             BROKEN_BED,
             BROKEN_CHAIR,
             BROKEN_SUITCASE,
@@ -47,12 +50,19 @@ namespace Scripts.Core
             NORMAL_SHELF,
             NORMAL_SUITCASE,
             
-            NONE,
+
             DOOR,
             ELEVATOR,
             START
         }
         
+        public static Dictionary<KeyObject, List<string>> KeyObjectToMonologues = new()
+        {
+            { KeyObject.MIRROR_SHARD, new List<string> { "Hmm... it looks like the shard from the mirror I got for my birthday years ago, but I've thrown that away ages ago" ,
+                "Another identical shard but it doesn't reflect me but something else. The rooms have also been filled with more of my personal effects that I didn't bring with me.",
+                "I'm getting tired of this, maybe I should just settle down." }
+            }
+        };
         public enum KeyObject
         {
             MIRROR_SHARD
