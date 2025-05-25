@@ -59,12 +59,14 @@ namespace Scripts.Managers
         
         private static bool _firstStartRoom = true;
         
+        private AudioManager _audioManager;
         
 
         private void Awake()
         {
             LoadMonologueData();
             DontDestroyOnLoad(dialogCanvasParent);
+            _audioManager = Object.FindObjectOfType<AudioManager>();
         }
         
         private void LoadMonologueData()
@@ -305,6 +307,7 @@ namespace Scripts.Managers
                 {
                     Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
                 }
+                _audioManager.PlayKeyItemFound();
                 return (true, chosenMonologue);
             }
 
