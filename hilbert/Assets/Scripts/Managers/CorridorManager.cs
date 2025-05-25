@@ -1,5 +1,5 @@
 using UnityEngine;
-using Corridor;
+using Scripts.Corridor;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;

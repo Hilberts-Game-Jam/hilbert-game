@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core
+namespace Scripts.Core
 {
     public class SwitchScene : MonoBehaviour
     {

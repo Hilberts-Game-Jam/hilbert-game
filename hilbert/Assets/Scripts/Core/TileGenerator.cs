@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Corridor;
 using UnityEngine;
 using Scripts.Managers;
 using Scripts.Rooms;
-using Unity.VisualScripting;
-using UnityEditor.Overlays;
+using Scripts.Corridor;
 using UnityEngine.Tilemaps;
 using static Scripts.Core.ClassesAndEnums;
 

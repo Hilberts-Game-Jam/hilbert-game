@@ -4,7 +4,7 @@ using Scripts.Interfaces;
 using Scripts.Managers;
 using Scripts.Core;
 
-namespace Corridor {
+namespace Scripts.Corridor {
     public class InteractableElevator : MonoBehaviour, IInteractable
     {
         private AudioManager _audioManager;
