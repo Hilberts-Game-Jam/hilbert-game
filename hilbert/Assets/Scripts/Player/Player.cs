@@ -52,11 +52,7 @@ namespace Scripts.Player
         
         public void OnUse(InputAction.CallbackContext context)
         {
-            
-            if (context.performed && _currentInteractable != null)
-            {
-                _currentInteractable.OnInteract();
-            }
+            _currentInteractable?.OnInteract();
         }
         
         private IEnumerator FadeInFootstepVolume()
@@ -113,6 +109,7 @@ namespace Scripts.Player
             if (interactable != null)
             {
                 _currentInteractable = interactable;
+                Debug.Log(interactable);
             }
         }
 
@@ -122,6 +119,7 @@ namespace Scripts.Player
             if (interactable != null && interactable == _currentInteractable)
             {
                 _currentInteractable = null;
+                Debug.Log("Exited interactable: " + interactable);
             }
         }
     }
