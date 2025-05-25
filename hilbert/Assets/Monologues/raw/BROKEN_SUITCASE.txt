@@ -1,0 +1,6 @@
+type: BROKEN_SUITCASE
+- It's riddled with dents.
+- One wheel is missing along with the zipper.
+- Closing it will require tape and force.
+- A crisis on wheels.
+- Less suitcase more of a crate.

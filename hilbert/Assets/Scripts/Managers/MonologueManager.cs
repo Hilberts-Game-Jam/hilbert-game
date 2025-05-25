@@ -12,10 +12,31 @@ namespace Managers
     public class MonologueData
     {
         public List<string> none;
-        public List<string> item;
         public List<string> door;
         public List<string> start;
         public List<string> first;
+        
+        public List<string> broken_bed;
+        public List<string> broken_chair;
+        public List<string> broken_suitcase;
+        public List<string> broken_table;
+        
+        public List<string> burned_bed;
+        public List<string> burned_chair;
+        public List<string> burned_shelf;
+        public List<string> burned_suitcase;
+        public List<string> burned_table;
+        
+        public List<string> moist_bed;
+        public List<string> moist_chair;
+        public List<string> moist_shelf;
+        public List<string> moist_suitcase;
+        public List<string> moist_table;
+        
+        public List<string> normal_bed;
+        public List<string> normal_chair;
+        public List<string> normal_shelf;
+        public List<string> normal_suitcase;
     }
     
     // todo: add delay between monologue calls
@@ -73,10 +94,8 @@ namespace Managers
 
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
         {
-            if (interactionType != ClassesAndEnums.InteractionType.NONE &&
-                interactionType != ClassesAndEnums.InteractionType.DOOR &&
-                interactionType != ClassesAndEnums.InteractionType.ITEM &&
-                interactionType != ClassesAndEnums.InteractionType.START) 
+            if (interactionType == ClassesAndEnums.InteractionType.DOOR || 
+                interactionType == ClassesAndEnums.InteractionType.ELEVATOR)
             {
                 // Only handle specific interaction types
                 return;
@@ -101,10 +120,16 @@ namespace Managers
                 }
             }
 
+            bool success_dialogText = false;
             // Set text content based on interaction type
             if (_dialogText != null)
             {
-                _dialogText.text = GetTextForInteraction(interactionType);
+                (success_dialogText, _dialogText.text) = GetTextForInteraction(interactionType);
+            }
+            if (!success_dialogText)
+            {
+                Debug.LogWarning($"No dialog text found for interaction type: {interactionType}");
+                return; // Exit if no dialog text is available
             }
 
             if (_speakerNameText != null)
@@ -118,13 +143,13 @@ namespace Managers
             _autoCloseCoroutine = StartCoroutine(AutoCloseDialog());
         }
 
-        private string GetTextForInteraction(ClassesAndEnums.InteractionType interactionType)
+        private (bool, string) GetTextForInteraction(ClassesAndEnums.InteractionType interactionType)
         {
             if (_monologueData == null)
             {
                 Debug.LogWarning("Monologue data not loaded, reloading...");
                 LoadMonologueData();
-                return "Huh? I don't have anything to say right now.";
+                return (true, "Huh? I don't have anything to say right now.");
             }
 
             List<string> textOptions = null;
@@ -135,8 +160,59 @@ namespace Managers
                 case ClassesAndEnums.InteractionType.NONE:
                     textOptions = _monologueData.none;
                     break;
-                case ClassesAndEnums.InteractionType.ITEM:
-                    textOptions = _monologueData.item;
+                case ClassesAndEnums.InteractionType.BROKEN_BED:
+                    textOptions = _monologueData.broken_bed;
+                    break;
+                case ClassesAndEnums.InteractionType.BROKEN_CHAIR:
+                    textOptions = _monologueData.broken_chair;
+                    break;
+                case ClassesAndEnums.InteractionType.BROKEN_SUITCASE:
+                    textOptions = _monologueData.broken_suitcase;
+                    break;
+                case ClassesAndEnums.InteractionType.BROKEN_TABLE:
+                    textOptions = _monologueData.broken_table;
+                    break;
+                case ClassesAndEnums.InteractionType.BURNED_BED:
+                    textOptions = _monologueData.burned_bed;
+                    break;
+                case ClassesAndEnums.InteractionType.BURNED_CHAIR:
+                    textOptions = _monologueData.burned_chair;
+                    break;
+                case ClassesAndEnums.InteractionType.BURNED_SHELF:
+                    textOptions = _monologueData.burned_shelf;
+                    break;
+                case ClassesAndEnums.InteractionType.BURNED_SUITCASE:
+                    textOptions = _monologueData.burned_suitcase;
+                    break;
+                case ClassesAndEnums.InteractionType.BURNED_TABLE:
+                    textOptions = _monologueData.burned_table;
+                    break;
+                case ClassesAndEnums.InteractionType.MOIST_BED:
+                    textOptions = _monologueData.moist_bed;
+                    break;
+                case ClassesAndEnums.InteractionType.MOIST_CHAIR:
+                    textOptions = _monologueData.moist_chair;
+                    break;
+                case ClassesAndEnums.InteractionType.MOIST_SHELF:
+                    textOptions = _monologueData.moist_shelf;
+                    break;
+                case ClassesAndEnums.InteractionType.MOIST_SUITCASE:
+                    textOptions = _monologueData.moist_suitcase;
+                    break;
+                case ClassesAndEnums.InteractionType.MOIST_TABLE:
+                    textOptions = _monologueData.moist_table;
+                    break;
+                case ClassesAndEnums.InteractionType.NORMAL_BED:
+                    textOptions = _monologueData.normal_bed;
+                    break;
+                case ClassesAndEnums.InteractionType.NORMAL_CHAIR:
+                    textOptions = _monologueData.normal_chair;
+                    break;
+                case ClassesAndEnums.InteractionType.NORMAL_SHELF:
+                    textOptions = _monologueData.normal_shelf;
+                    break;
+                case ClassesAndEnums.InteractionType.NORMAL_SUITCASE:
+                    textOptions = _monologueData.normal_suitcase;
                     break;
                 case ClassesAndEnums.InteractionType.DOOR:
                     textOptions = _monologueData.door;
@@ -151,23 +227,22 @@ namespace Managers
                     {
                         textOptions = _monologueData.start;
                     }
-                    
                     break;
                 default:
                     Debug.LogWarning($"No dialogue texts defined for interaction type: {interactionType}");
-                    return "...";
+                    return (false, "...");
             }
-            
+
             // Check if there are any text options available
             if (textOptions == null || textOptions.Count == 0)
             {
                 Debug.LogWarning($"No dialogue available for {interactionType}.");
-                return "I don't know what to say to that.";
+                return (false, "I don't know what to say to that.");
             }
-            
+
             // Choose a random text option from the list
             int randomIndex = Random.Range(0, textOptions.Count);
-            return textOptions[randomIndex];
+            return (true, textOptions[randomIndex]);
         }
 
         private string GetSpeakerForInteraction(ClassesAndEnums.InteractionType interactionType)
