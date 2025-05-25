@@ -16,6 +16,7 @@ namespace Scripts.Managers
         
         public List<string> BROKEN_BED;
         public List<string> BROKEN_CHAIR;
+        public List<string> BROKEN_SHELF;
         public List<string> BROKEN_SUITCASE;
         public List<string> BROKEN_TABLE;
         
@@ -37,6 +38,7 @@ namespace Scripts.Managers
         public List<string> NORMAL_CHAIR;
         public List<string> NORMAL_SHELF;
         public List<string> NORMAL_SUITCASE;
+        public List<string> NORMAL_TABLE;
     }
     
     // todo: add delay between monologue calls
@@ -76,7 +78,7 @@ namespace Scripts.Managers
                 _monologueData = JsonUtility.FromJson<MonologueData>(jsonText);
                 
                 // print loaded data for debugging with for loop
-                if (_monologueData == null)
+                if (_monologueData != null)
                 {
                     Debug.Log("Printing monologue data:");
                     foreach (var list in _monologueData.GetType().GetFields())
@@ -91,10 +93,6 @@ namespace Scripts.Managers
                             Debug.Log($"{list.Name} is null or not a List<string>");
                         }
                     }
-                }
-                else
-                {
-                    Debug.LogWarning("Monologue data is null! This might indicate an issue with the JSON file or deserialization.");
                 }
                 
                 
@@ -201,6 +199,9 @@ namespace Scripts.Managers
                 case ClassesAndEnums.InteractionType.BROKEN_CHAIR:
                     textOptions = _monologueData.BROKEN_CHAIR;
                     break;
+                case ClassesAndEnums.InteractionType.BROKEN_SHELF:
+                    textOptions = _monologueData.BROKEN_SHELF;
+                    break;
                 case ClassesAndEnums.InteractionType.BROKEN_SUITCASE:
                     textOptions = _monologueData.BROKEN_SUITCASE;
                     break;
@@ -248,6 +249,9 @@ namespace Scripts.Managers
                     break;
                 case ClassesAndEnums.InteractionType.NORMAL_SUITCASE:
                     textOptions = _monologueData.NORMAL_SUITCASE;
+                    break;
+                case ClassesAndEnums.InteractionType.NORMAL_TABLE:
+                    textOptions = _monologueData.NORMAL_TABLE;
                     break;
                 case ClassesAndEnums.InteractionType.DOOR:
                     textOptions = _monologueData.DOOR;
