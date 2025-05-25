@@ -54,7 +54,7 @@ namespace Scripts.Managers
             GenerateNewRoom();
 
             // TODO: remove if not necessary for testing anymore
-            SceneManager.LoadScene("Room");
+            // SceneManager.LoadScene("Room");
 
         }
 
