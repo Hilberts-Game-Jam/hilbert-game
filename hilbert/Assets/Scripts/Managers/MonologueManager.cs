@@ -300,8 +300,8 @@ namespace Scripts.Managers
             {
                 int keyObjectIndex = Random.Range(0, ClassesAndEnums.IndexToKeyObjectAndMonologues.Count);
                 var outputKeyItemAndTexts = ClassesAndEnums.IndexToKeyObjectAndMonologues[keyObjectIndex];
-                var chosenMonologue = outputKeyItemAndTexts.Item2[Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1]];
-                Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
+                var chosenMonologue = outputKeyItemAndTexts.Item2[Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1]];
+                Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
                 return (true, chosenMonologue);
             }
 
