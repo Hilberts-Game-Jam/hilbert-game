@@ -367,6 +367,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 907952996841468230, guid: b6b98311b7df406499ae887f89a4c263, type: 3}
   m_PrefabInstance: {fileID: 106236492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &106236494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2330241422161204684, guid: b6b98311b7df406499ae887f89a4c263, type: 3}
+  m_PrefabInstance: {fileID: 106236492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &112209186
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +630,7 @@ MonoBehaviour:
   _colliding_floorTile: {fileID: 11400000, guid: 416aa94bb8b33074e807fc6bda3b1972, type: 2}
   _doorTile: {fileID: 11400000, guid: 192ade61cff6ec6f6b9a5d509fbf0d40, type: 2}
   _blockedTile: {fileID: 11400000, guid: 403d71f52883e244db1d98c4f18afcc1, type: 2}
+  _playerObject: {fileID: 106236494}
 --- !u!4 &864714488
 Transform:
   m_ObjectHideFlags: 0
