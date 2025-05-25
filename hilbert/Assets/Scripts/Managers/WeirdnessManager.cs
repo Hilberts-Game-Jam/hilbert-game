@@ -47,10 +47,11 @@ namespace Managers
                 IncrementWeirdness();
             }
         }
-        
+
         public static void IncrementWeirdness()
         {
             WeirdnessLevel += 1;
+            Debug.Log("Weirdness Level" + WeirdnessLevel);
         }
         public static void DecrementWeirdness()
         {

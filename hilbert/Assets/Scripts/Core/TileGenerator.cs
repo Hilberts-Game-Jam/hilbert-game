@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Corridor;
 using UnityEngine;
 using Scripts.Managers;
 using Scripts.Rooms;
@@ -16,11 +17,16 @@ namespace Scripts.Core
 
         private RoomLayout _layout;
         [SerializeField] private Tilemap _tilemap;
+        [SerializeField] private TilemapCollider2D _tilemap_collider;
         [SerializeField] private Tile _wallTile;
         [SerializeField] private Tile _wallCornerTile;
         [SerializeField] private Tile _floorTile;
+        [SerializeField] private Tile _colliding_floorTile;
         [SerializeField] private Tile _doorTile;
         [SerializeField] private Tile _blockedTile;
+        [SerializeField] private GameObject _doorInteractiblePrefab;
+
+        [SerializeField] private GameObject _playerObject;
         //[SerializeField] private GameObject _playerObj;
         private RoomType _type;
         private Vector2Int _spawnPoint;
@@ -28,8 +34,9 @@ namespace Scripts.Core
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            
             _spawnPoint = RoomManager.Instance.spawn_pos;
+            _playerObject.gameObject.transform.position = new Vector3(_spawnPoint.x + 0.5f, _spawnPoint.y + 0.5f, 0);
             //Instantiate(_playerObj, new Vector3(_spawnPoint.x, _spawnPoint.y, 0), Quaternion.identity);
             
             // Building the tiles
@@ -44,8 +51,15 @@ namespace Scripts.Core
                             break;
                         case TileType.DOOR: 
                             _tilemap.SetTile(new Vector3Int(i, j), GetWallTile(i,j, false));
+                            GameObject door = Instantiate(_doorInteractiblePrefab, new Vector3(i + 0.5f, j + 0.5f, 0),
+                                Quaternion.identity);
+                            InteractableDoor doorInteractible =
+                                (InteractableDoor) door.GetComponent<InteractableDoor>();
+                            doorInteractible.leadsTo = "GameScene";
                             break;
-                        case TileType.BLOCKED: _tilemap.SetTile(new Vector3Int(i, j), _blockedTile);
+                        case TileType.BLOCKED: 
+                            _tilemap.SetTile(new Vector3Int(i, j), _colliding_floorTile);
+                            _tilemap.SetColliderType(new Vector3Int(i, j), Tile.ColliderType.Sprite);
                             break;
                         case TileType.FREE: _tilemap.SetTile(new Vector3Int(i, j), _floorTile);
                             break;
@@ -111,6 +125,9 @@ namespace Scripts.Core
 
         private void Awake()
         {
+            
+            Managers.RoomManager.Instance.GenerateNewRoom();
+            
             // Receiving room layout from RoomManager
             _layout = Managers.RoomManager.Instance.layout;
             _type = Managers.RoomManager.Instance.roomType;

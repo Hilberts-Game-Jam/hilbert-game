@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using System.Transactions;
 using Managers;
 using Scripts.Rooms;
@@ -29,7 +30,7 @@ namespace Scripts.Managers
 
         private const double WALKABLE_THRESHOLD = 0.1;
 
-        private void Awake()
+        private async Task Awake()
         {
             // Creating Singleton Instance
             if (Instance)
@@ -42,6 +43,8 @@ namespace Scripts.Managers
                 Debug.Log("Setting RoomManager instance");
                 Instance = this;
                 DontDestroyOnLoad(Instance);
+                await Task.Delay(2000);
+                CorridorManager.Instance.GenerateInitialCorridor();
             }
         }
 
@@ -58,7 +61,7 @@ namespace Scripts.Managers
 
         }
 
-        private void GenerateNewRoom()
+        public void GenerateNewRoom()
         {
 
             Debug.Log("Generating Room");
@@ -66,7 +69,7 @@ namespace Scripts.Managers
             furniture_objects = new List<FurnitureObjectInfo>();
             
             // TODO: Random Rooms, right now only test room
-            Random random = new Random();
+            Random random = new Random(Guid.NewGuid().GetHashCode());
             layout = new RoomLayout(random.Next(7, 11), random.Next(7, 11));
             
             // Placing the door

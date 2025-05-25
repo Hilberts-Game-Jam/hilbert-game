@@ -50,6 +50,7 @@ namespace Scripts.Core
             NONE,
             DOOR,
             ELEVATOR,
+            START
         }
         
         public enum KeyObject

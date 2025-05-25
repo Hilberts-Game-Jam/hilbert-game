@@ -12,6 +12,10 @@ namespace Managers
     public class MonologueData
     {
         public List<string> none;
+        public List<string> door;
+        public List<string> start;
+        public List<string> first;
+        
         public List<string> broken_bed;
         public List<string> broken_chair;
         public List<string> broken_suitcase;
@@ -49,6 +53,8 @@ namespace Managers
         private TextMeshProUGUI _speakerNameText;
         private Coroutine _autoCloseCoroutine;
         private MonologueData _monologueData;
+        
+        private static bool _firstStartRoom = true;
         
         
 
@@ -207,6 +213,20 @@ namespace Managers
                     break;
                 case ClassesAndEnums.InteractionType.NORMAL_SUITCASE:
                     textOptions = _monologueData.normal_suitcase;
+                    break;
+                case ClassesAndEnums.InteractionType.DOOR:
+                    textOptions = _monologueData.door;
+                    break;
+                case ClassesAndEnums.InteractionType.START:
+                    if (_firstStartRoom)
+                    {
+                        textOptions = _monologueData.first;
+                        _firstStartRoom = false; // Set to false after the first interaction
+                    }
+                    else
+                    {
+                        textOptions = _monologueData.start;
+                    }
                     break;
                 default:
                     Debug.LogWarning($"No dialogue texts defined for interaction type: {interactionType}");

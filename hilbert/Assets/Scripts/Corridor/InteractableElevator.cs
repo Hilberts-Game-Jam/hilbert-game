@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Scripts.Interfaces;
 using Scripts.Managers;
+using Managers;
 
 namespace Corridor {
     public class InteractableElevator : MonoBehaviour, IInteractable
@@ -16,7 +17,10 @@ namespace Corridor {
         {
             Debug.Log("Elevator interacted!");
             StartCoroutine(waitSound(_audioManager._audioClips[1]));
-            
+            WeirdnessManager.IncrementWeirdness();
+            Debug.Log("Corridor regenerated");
+            CorridorManager.Instance.DestroyEveryTile(); //This fails
+            CorridorManager.Instance.GenerateInitialCorridor();
         }
         
         private IEnumerator waitSound(AudioClip clip)
