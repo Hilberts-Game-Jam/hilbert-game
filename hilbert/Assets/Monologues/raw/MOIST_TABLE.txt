@@ -1,0 +1,11 @@
+type: MOIST_TABLE
+- This table wears its history in salt and effort."
+- A table with stains of sweat.
+- Someone must have had a hard time on this table.
+- Clearly well-used. Possibly too well.
+- Not freshly polished, that's for sure.
+- Slightly sticky to the touch. Disgusting.
+- I don't know if it's shiny or ?... its damp. Really damp
+- Someone must have rested here after a workout session.
+- This was definitely not wiped recently. Or often.
+- Is this up to health and safety standards?

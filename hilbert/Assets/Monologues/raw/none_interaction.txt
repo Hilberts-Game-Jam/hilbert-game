@@ -1,3 +1,2 @@
-type: none
-- none interaction 1
-- none interaction 2
+type: NONE
+- There is nothing i can interact with here.
