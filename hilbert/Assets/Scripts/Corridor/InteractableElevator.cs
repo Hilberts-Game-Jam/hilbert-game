@@ -19,7 +19,7 @@ namespace Corridor {
             StartCoroutine(waitSound(_audioManager._audioClips[1]));
             WeirdnessManager.IncrementWeirdness();
             Debug.Log("Corridor regenerated");
-            CorridorManager.Instance.DestroyEveryTile();
+            CorridorManager.Instance.DestroyEveryTile(); //This fails
             CorridorManager.Instance.GenerateInitialCorridor();
         }
         
