@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Core;
 using Scripts.Core;
+using Scripts.Player;
 using TMPro;
 using UnityEngine;
 
@@ -95,7 +96,8 @@ namespace Managers
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
         {
             if (interactionType == ClassesAndEnums.InteractionType.DOOR || 
-                interactionType == ClassesAndEnums.InteractionType.ELEVATOR)
+                interactionType == ClassesAndEnums.InteractionType.ELEVATOR ||
+                interactionType == ClassesAndEnums.InteractionType.NONE)
             {
                 // Only handle specific interaction types
                 return;
@@ -238,6 +240,16 @@ namespace Managers
             {
                 Debug.LogWarning($"No dialogue available for {interactionType}.");
                 return (false, "I don't know what to say to that.");
+            }
+            
+            bool triggerKeyItemText = ClassesAndEnums.D20.Roll() == 20;
+            if (triggerKeyItemText)
+            {
+                int keyObjectIndex = Random.Range(0, ClassesAndEnums.IndexToKeyObjectAndMonologues.Count);
+                var outputKeyItemAndTexts = ClassesAndEnums.IndexToKeyObjectAndMonologues[keyObjectIndex];
+                var chosenMonologue = outputKeyItemAndTexts.Item2[Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1]];
+                Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
+                return (true, chosenMonologue);
             }
 
             // Choose a random text option from the list

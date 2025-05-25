@@ -26,7 +26,7 @@ namespace Scripts.Player
         
         private IInteractable _currentInteractable;
         
-        public Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
+        public static Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
         
         private void Awake()
         {
