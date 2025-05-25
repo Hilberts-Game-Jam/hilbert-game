@@ -1,6 +1,7 @@
 using UnityEngine;
 using Corridor;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 namespace Scripts.Managers
 {
@@ -13,21 +14,26 @@ namespace Scripts.Managers
         private Transform _playerTransform;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+        public static CorridorManager Instance;
+
+        private void Awake()
+        {
+            if (Instance)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(Instance);
+            }
+            
+        }
+
         void Start()
         {
-            GameObject player = GameObject.Find("Player");
-            if (player == null)
-            {
-                Debug.LogError("Player GameObject not found!");
-                return;
-            }
-
-            _playerTransform = player.transform; // <-- FIX: assign playerTransform!
-
-            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
-            int startChunk = Mathf.FloorToInt(playerPosition_x / _chunkWidth);
-            _corridorGen.generateCorridor(startChunk * _chunkWidth); // generate initial chunk
-            _generatedChunks.Add(startChunk);
+            GenerateInitialCorridor();
         }
 
         // Update is called once per frame
@@ -54,9 +60,34 @@ namespace Scripts.Managers
                     {
                         _corridorGen.destroyCorridor((chunkToCheck + 5) * _chunkWidth);
                         _generatedChunks.Remove(chunkToCheck + 5);
-                    }                   
+                    }
                 }
             }
+        }
+
+        public void GenerateInitialCorridor()
+        {
+            GameObject player = GameObject.Find("Player");
+            if (player == null)
+            {
+                Debug.LogError("Player GameObject not found!");
+                return;
+            }
+
+            _playerTransform = player.transform;
+
+            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
+            int startChunk = Mathf.FloorToInt(playerPosition_x / _chunkWidth);
+            _corridorGen.generateCorridor(startChunk * _chunkWidth);
+            _generatedChunks.Add(startChunk);
+        }
+
+        public void DestroyEveryTile() {
+            foreach (int chunk in _generatedChunks)
+            {
+                _corridorGen.destroyCorridor(chunk * _chunkWidth);
+            }
+            _generatedChunks.Clear();
         }
     }
 }
