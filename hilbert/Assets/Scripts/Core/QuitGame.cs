@@ -1,6 +1,6 @@
 using  UnityEngine;
 
-namespace Core
+namespace Scripts.Core
 {
     public class QuitGame : MonoBehaviour
     {

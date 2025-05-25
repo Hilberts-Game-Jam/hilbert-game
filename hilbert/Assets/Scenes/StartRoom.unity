@@ -279,6 +279,108 @@ Transform:
   - {fileID: 775533798}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &633333610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825010214506669723, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8065530245343192118, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+      propertyPath: m_Name
+      value: UICanvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+--- !u!1 &633333611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8065530245343192118, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
+  m_PrefabInstance: {fileID: 633333610}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &775533797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,9 +1140,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984088471}
-  - component: {fileID: 984088474}
   - component: {fileID: 984088473}
   - component: {fileID: 984088475}
+  - component: {fileID: 984088476}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1080,22 +1182,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 215be76962c24a66bb45e12bdc98c4b6, type: 3}
   - {fileID: 8300000, guid: 89053347e4964c5fab20daa1f120c9f1, type: 3}
   _audioSource: {fileID: 984088475}
---- !u!114 &984088474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984088470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a998ea850d4373aad1441ed1f80ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogPrefab: {fileID: 0}
-  dialogDuration: 2
-  dialogCanvasParent: {fileID: 0}
-  monologueFilePath: Assets/Monologues/monologues.json
 --- !u!82 &984088475
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1193,6 +1279,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &984088476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984088470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a998ea850d4373aad1441ed1f80ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogPrefab: {fileID: 2725472264186902157, guid: 98a2a3e240c230e60a5a07b49637c9a2, type: 3}
+  dialogDuration: 2
+  dialogCanvasParent: {fileID: 633333611}
+  monologueFilePath: Assets/Monologues/monologues.json
 --- !u!1001 &1258724834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1910,3 +2012,4 @@ SceneRoots:
   - {fileID: 1359279564}
   - {fileID: 2079428914}
   - {fileID: 578656923}
+  - {fileID: 633333610}

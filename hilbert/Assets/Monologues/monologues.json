@@ -23,6 +23,18 @@
     "It doesn't function like it used to.",
     "It's still recognizable as a chair... barley."
   ],
+  "BROKEN_SHELF": [
+    "Even the shelf has reached its limit.",
+    "It’s not broken, just enthusiastically retired.",
+    "A shelf that bent under the weight of mild responsibility.",
+    "It holds things like I hold conversations—awkwardly.",
+    "More creaks than confidence.",
+    "One more book and it gives up completely.",
+    "This is what happens when furniture has feelings.",
+    "Architecture of apathy.",
+    "It stands as a warning, not an invitation.",
+    "Structurally defeated."
+  ],
   "BROKEN_SUITCASE": [
     "It's riddled with dents.",
     "One wheel is missing along with the zipper.",
@@ -202,5 +214,17 @@
     "It gets from A to b without drama.",
     "Not new, not old, just there.",
     "A regular suitcase that is full of stickers."
+  ],
+  "NORMAL_TABLE": [
+    "This is a table.",
+    "It is what it is... a table.",
+    "Designed to be ignored.",
+    "The epitome of average.",
+    "It works.",
+    "Nothing to see here just a table.",
+    "It's a wood plate with four corners.",
+    "It likely came with a manual.",
+    "Sometimes a table is just a table.",
+    "I won't remember it, and that's okay."
   ]
 }

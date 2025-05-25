@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Managers
+namespace Scripts.Managers
 {
     public class CorridorMusicManager : MonoBehaviour
     {

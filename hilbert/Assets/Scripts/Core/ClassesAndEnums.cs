@@ -26,6 +26,8 @@ namespace Scripts.Core
         // todo: make this enum better
         public enum InteractionType
         {
+            NONE,
+            
             BROKEN_BED,
             BROKEN_CHAIR,
             BROKEN_SUITCASE,
@@ -48,10 +50,13 @@ namespace Scripts.Core
             NORMAL_SHELF,
             NORMAL_SUITCASE,
             
-            NONE,
+
             DOOR,
             ELEVATOR,
-            START
+            START,
+            
+            NORMAL_TABLE,
+            BROKEN_SHELF,
         }
         
         public static Dictionary<int, (KeyObject, List<string>)> IndexToKeyObjectAndMonologues = new()

@@ -1,11 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scripts.Core;
 using Scripts.Input;
 using Scripts.Interfaces;
+using Scripts.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Scripts.Player
@@ -23,6 +24,11 @@ namespace Scripts.Player
         private Animator _playerAnimator;
         private AudioSource _footStepSource;
         [SerializeField][Range(0f,1f)] float _footStepVolume = 0.2f;
+
+        [SerializeField] private static int _doorCount;
+        [SerializeField] private static float _roomCount;
+        [SerializeField] private static readonly int _maxRoomCount = 20;
+        [SerializeField] private static int _resets = 0;
         
         private IInteractable _currentInteractable;
         
@@ -40,7 +46,7 @@ namespace Scripts.Player
         {
             InputManager.UsePressed += HandleUse;
         }
-
+        
         private void OnDisable()
         {
             InputManager.UsePressed -= HandleUse;
@@ -54,6 +60,16 @@ namespace Scripts.Player
         public void OnUse(InputAction.CallbackContext context)
         {
             _currentInteractable?.OnInteract();
+            if (_currentInteractable != null)
+            {
+                Debug.Log("Interacted with: " + _currentInteractable);
+                _doorCount++;
+                _roomCount = _doorCount / 2f;
+            }
+            else
+            {
+                Debug.Log("No interactable object in range.");
+            }
         }
         
         private IEnumerator FadeInFootstepVolume()
@@ -101,6 +117,21 @@ namespace Scripts.Player
                     _footStepSource.volume = 0f;
                     StopAllCoroutines();
                 }
+            }
+
+            if (_roomCount == _maxRoomCount - 1)
+            {
+                Debug.Log("Bald wirds hell oder so :).");
+            }
+
+            if (_roomCount >= _maxRoomCount)
+            {
+                Debug.Log("Reset to start Scene");
+                WeirdnessManager.ResetWeirdness();
+                _roomCount = 0f;
+                _doorCount = 0;
+                _resets++;
+                SceneManager.LoadScene("StartRoom");
             }
         }
         
