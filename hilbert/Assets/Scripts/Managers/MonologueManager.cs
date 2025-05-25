@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Scripts.Core;
 using Scripts.Player;
 using TMPro;
@@ -56,8 +57,8 @@ namespace Scripts.Managers
         private TextMeshProUGUI _speakerNameText;
         private Coroutine _autoCloseCoroutine;
         private MonologueData _monologueData;
-        
-        private static bool _firstStartRoom = true;
+        private bool hadMax = false;
+        public static bool _firstStartRoom = true;
         
         
 
@@ -190,6 +191,7 @@ namespace Scripts.Managers
             
             // start coroutine to auto-close the dialog after 'dialogDuration' seconds
             _autoCloseCoroutine = StartCoroutine(AutoCloseDialog());
+            
         }
 
         private (bool, string) GetTextForInteraction(ClassesAndEnums.InteractionType interactionType)
@@ -324,6 +326,11 @@ namespace Scripts.Managers
         {
             yield return new WaitForSeconds(dialogDuration);
             CloseDialog();
+            if (Player.Player.PlayerKeyObjects.Values.Any(v => v == 2) && hadMax)
+            {
+                hadMax = false;
+                EndManager.Instance.BackToMenu();
+            } else if (Player.Player.PlayerKeyObjects.Values.Any(v => v == 2)) hadMax = true;
         }
         
 
