@@ -14,6 +14,8 @@ namespace Managers
         public List<string> none;
         public List<string> item;
         public List<string> door;
+        public List<string> start;
+        public List<string> first;
     }
     
     // todo: add delay between monologue calls
@@ -30,6 +32,8 @@ namespace Managers
         private TextMeshProUGUI _speakerNameText;
         private Coroutine _autoCloseCoroutine;
         private MonologueData _monologueData;
+        
+        private static bool _firstStartRoom = true;
         
         
 
@@ -71,7 +75,8 @@ namespace Managers
         {
             if (interactionType != ClassesAndEnums.InteractionType.NONE &&
                 interactionType != ClassesAndEnums.InteractionType.DOOR &&
-                interactionType != ClassesAndEnums.InteractionType.ITEM)
+                interactionType != ClassesAndEnums.InteractionType.ITEM &&
+                interactionType != ClassesAndEnums.InteractionType.START) 
             {
                 // Only handle specific interaction types
                 return;
@@ -136,18 +141,30 @@ namespace Managers
                 case ClassesAndEnums.InteractionType.DOOR:
                     textOptions = _monologueData.door;
                     break;
+                case ClassesAndEnums.InteractionType.START:
+                    if (_firstStartRoom)
+                    {
+                        textOptions = _monologueData.first;
+                        _firstStartRoom = false; // Set to false after the first interaction
+                    }
+                    else
+                    {
+                        textOptions = _monologueData.start;
+                    }
+                    
+                    break;
                 default:
                     Debug.LogWarning($"No dialogue texts defined for interaction type: {interactionType}");
                     return "...";
             }
-
+            
             // Check if there are any text options available
             if (textOptions == null || textOptions.Count == 0)
             {
                 Debug.LogWarning($"No dialogue available for {interactionType}.");
                 return "I don't know what to say to that.";
             }
-
+            
             // Choose a random text option from the list
             int randomIndex = Random.Range(0, textOptions.Count);
             return textOptions[randomIndex];

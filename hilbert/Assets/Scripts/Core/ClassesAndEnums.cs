@@ -28,6 +28,7 @@ namespace Scripts.Core
             DOOR,
             ITEM,
             ELEVATOR,
+            START
         }
         
         public enum KeyObject
