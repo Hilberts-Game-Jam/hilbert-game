@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Transactions;
+using Managers;
 using Scripts.Rooms;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
@@ -26,7 +27,7 @@ namespace Scripts.Managers
         public List<FurnitureObjectInfo> furniture_objects = new List<FurnitureObjectInfo>();
         private string[] possibleObjects = new[] {"Chest", "Couch", "Shelf", "Suitcase", "Table"};
 
-        private const double WALKABLE_THRESHOLD = 0.7;
+        private const double WALKABLE_THRESHOLD = 0.1;
 
         private void Awake()
         {

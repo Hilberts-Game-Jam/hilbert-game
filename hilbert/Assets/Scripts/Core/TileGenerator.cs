@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Scripts.Managers;
 using Scripts.Rooms;
@@ -53,6 +55,20 @@ namespace Scripts.Core
                 }
             }
             
+            // Adding the objects
+            List<FurnitureObjectInfo> furnitureList = RoomManager.Instance.furniture_objects;
+
+            for (int i = 0; i < furnitureList.Count; i++)
+            {
+                FurnitureObjectInfo curFurniture = furnitureList.ElementAt(i);
+                float x_cord = (float) (curFurniture.GetXStart() + (float) (curFurniture.GetXEnd() - curFurniture.GetXStart()) / 2);
+                float y_cord = (float) (curFurniture.GetYStart() + (float) (curFurniture.GetYEnd() - curFurniture.GetYStart()) / 2);
+
+                GameObject curObj = ObjectSpawner.Instance.GetRandomVariant(curFurniture.GetName());
+                Instantiate(curObj,new Vector3(x_cord, y_cord, 0), Quaternion.identity);
+
+            }
+
         }
 
         private void SetRotationOfTileAtPosition(int i, int j)
