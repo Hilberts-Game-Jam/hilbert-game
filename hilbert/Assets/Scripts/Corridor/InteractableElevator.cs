@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using Scripts.Interfaces;
 using Scripts.Managers;
-using Managers;
 using Scripts.Core;
 
 namespace Corridor {

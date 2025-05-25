@@ -1140,7 +1140,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984088471}
-  - component: {fileID: 984088474}
   - component: {fileID: 984088473}
   - component: {fileID: 984088475}
   - component: {fileID: 984088476}
@@ -1183,22 +1182,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 215be76962c24a66bb45e12bdc98c4b6, type: 3}
   - {fileID: 8300000, guid: 89053347e4964c5fab20daa1f120c9f1, type: 3}
   _audioSource: {fileID: 984088475}
---- !u!114 &984088474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984088470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a998ea850d4373aad1441ed1f80ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogPrefab: {fileID: 0}
-  dialogDuration: 2
-  dialogCanvasParent: {fileID: 0}
-  monologueFilePath: Assets/Monologues/monologues.json
 --- !u!82 &984088475
 AudioSource:
   m_ObjectHideFlags: 0

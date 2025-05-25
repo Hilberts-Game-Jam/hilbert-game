@@ -496,8 +496,8 @@ GameObject:
   - component: {fileID: 914559108}
   - component: {fileID: 914559107}
   - component: {fileID: 914559106}
-  - component: {fileID: 914559111}
   - component: {fileID: 914559110}
+  - component: {fileID: 914559111}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogPrefab: {fileID: 2725472264186902157, guid: 98a2a3e240c230e60a5a07b49637c9a2, type: 3}
   dialogDuration: 2
-  dialogCanvasParent: {fileID: 1445159282}
+  dialogCanvasParent: {fileID: 1447266270}
   monologueFilePath: Assets/Monologues/monologues.json
 --- !u!1 &1217298546
 GameObject:
@@ -1020,7 +1020,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &1445159281
+--- !u!1001 &1447266269
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1117,10 +1117,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
---- !u!1 &1445159282 stripped
+--- !u!1 &1447266270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8065530245343192118, guid: f0c9d53081ab77c4c8fbdeb326d11720, type: 3}
-  m_PrefabInstance: {fileID: 1445159281}
+  m_PrefabInstance: {fileID: 1447266269}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706598096
 GameObject:
@@ -1322,4 +1322,4 @@ SceneRoots:
   - {fileID: 854076821}
   - {fileID: 1439761785}
   - {fileID: 1217298549}
-  - {fileID: 1445159281}
+  - {fileID: 1447266269}
