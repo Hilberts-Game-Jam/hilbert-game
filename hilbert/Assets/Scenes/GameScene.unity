@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 385723286}
   - component: {fileID: 385723282}
   - component: {fileID: 385723285}
+
   - component: {fileID: 385723284}
   m_Layer: 31
   m_Name: Player
@@ -291,6 +292,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+
 --- !u!212 &385723282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -334,7 +336,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2311659948842064771, guid: 43344379ea9a3f247b548587777a4c01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -552,8 +554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82de2861d0f80e4d8f126520d1370bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1706601707
-=======
+  _corridorGen: {fileID: 1997537220}
+  _chunkWidth: 20
 --- !u!1 &1706598096
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +572,7 @@ GameObject:
   - component: {fileID: 1706598097}
   - component: {fileID: 1706598099}
   - component: {fileID: 1706598098}
+  - component: {fileID: 1706598100}
   m_Layer: 4
   m_Name: corridorTilemap
   m_TagString: Untagged
@@ -764,14 +767,32 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: -0.5
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -2, y: -4, z: 0}
-  m_Size: {x: 12, y: 8, z: 1}
+  m_Origin: {x: -5, y: -4, z: 0}
+  m_Size: {x: 15, y: 9, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -791,12 +812,108 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1706598100
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706598096}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
+--- !u!1 &1997537219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1997537221}
+  - component: {fileID: 1997537220}
+  m_Layer: 0
+  m_Name: CorridorGeneration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1997537220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997537219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58e00dad25bcb74eb48e64c4af47c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  corridorTilemap: {fileID: 1706598099}
+  _corridorTile: {fileID: 11400000, guid: 2b2466c786e10ef71b4cb35e34ce9261, type: 2}
+  _lampUpper: {fileID: 11400000, guid: 742d5cb058a10f8b6a664b3ddd071d4a, type: 2}
+  _lampBottom: {fileID: 11400000, guid: 50d6e5ce395d84efe91396483c1ecc7a, type: 2}
+  _wallUpper: {fileID: 11400000, guid: b399cbb68e4a7698887217dfc0a21761, type: 2}
+  _wallBottom: {fileID: 11400000, guid: 981cd95baeb1cc4e3ab327e49e3ecc5f, type: 2}
+  _doorUpper: {fileID: 11400000, guid: 192ade61cff6ec6f6b9a5d509fbf0d40, type: 2}
+  _doorBottom: {fileID: 11400000, guid: acbe8d69b866c98d89b774cffc445f45, type: 2}
+  _elevatorUpper: {fileID: 11400000, guid: 93d4e3a102756d8e3b079a2a3782a026, type: 2}
+  _elevatorBottom: {fileID: 11400000, guid: f0878bf45a6d21fc9801a48bf9677587, type: 2}
+  _doorInteractablePrefab: {fileID: 6605335748123785305, guid: 74446e4d1c2f2704484d3b4550bc8c75, type: 3}
+  _elevatorInteractablePrefab: {fileID: 2744884087845899025, guid: ff58470300d9c22d6ae908fd50288aec, type: 3}
+--- !u!4 &1997537221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997537219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14562, y: -0.73503, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+
   - {fileID: 914559105}
   - {fileID: 155048140}
   - {fileID: 1706601710}
   - {fileID: 768451738}
   - {fileID: 385723283}
+  - {fileID: 1997537221}
