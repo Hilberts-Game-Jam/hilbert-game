@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Corridor;
 using UnityEngine;
 using Scripts.Managers;
 using Scripts.Rooms;
@@ -23,6 +24,7 @@ namespace Scripts.Core
         [SerializeField] private Tile _colliding_floorTile;
         [SerializeField] private Tile _doorTile;
         [SerializeField] private Tile _blockedTile;
+        [SerializeField] private GameObject _doorInteractiblePrefab;
 
         [SerializeField] private GameObject _playerObject;
         //[SerializeField] private GameObject _playerObj;
@@ -32,7 +34,7 @@ namespace Scripts.Core
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            
             _spawnPoint = RoomManager.Instance.spawn_pos;
             _playerObject.gameObject.transform.position = new Vector3(_spawnPoint.x + 0.5f, _spawnPoint.y + 0.5f, 0);
             //Instantiate(_playerObj, new Vector3(_spawnPoint.x, _spawnPoint.y, 0), Quaternion.identity);
@@ -49,6 +51,11 @@ namespace Scripts.Core
                             break;
                         case TileType.DOOR: 
                             _tilemap.SetTile(new Vector3Int(i, j), GetWallTile(i,j, false));
+                            GameObject door = Instantiate(_doorInteractiblePrefab, new Vector3(i + 0.5f, j + 0.5f, 0),
+                                Quaternion.identity);
+                            InteractableDoor doorInteractible =
+                                (InteractableDoor) door.GetComponent<InteractableDoor>();
+                            doorInteractible.leadsTo = "GameScene";
                             break;
                         case TileType.BLOCKED: 
                             _tilemap.SetTile(new Vector3Int(i, j), _colliding_floorTile);

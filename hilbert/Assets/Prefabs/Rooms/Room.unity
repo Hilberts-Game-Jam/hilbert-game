@@ -630,6 +630,7 @@ MonoBehaviour:
   _colliding_floorTile: {fileID: 11400000, guid: 416aa94bb8b33074e807fc6bda3b1972, type: 2}
   _doorTile: {fileID: 11400000, guid: 192ade61cff6ec6f6b9a5d509fbf0d40, type: 2}
   _blockedTile: {fileID: 11400000, guid: 403d71f52883e244db1d98c4f18afcc1, type: 2}
+  _doorInteractiblePrefab: {fileID: 6605335748123785305, guid: 74446e4d1c2f2704484d3b4550bc8c75, type: 3}
   _playerObject: {fileID: 106236494}
 --- !u!4 &864714488
 Transform:
