@@ -46,7 +46,7 @@ namespace Scripts.Managers
     public class MonologueManager : MonoBehaviour
     {
         [SerializeField] private GameObject dialogPrefab;
-        [SerializeField] private float dialogDuration = 2f;
+        [SerializeField] private float dialogDuration = 4f;
         [SerializeField] private GameObject dialogCanvasParent;
         [SerializeField] private string monologueFilePath = "Assets/Monologues/monologues.json";
 
@@ -295,7 +295,7 @@ namespace Scripts.Managers
                 return (false, "I don't know what to say to that.");
             }
             
-            bool triggerKeyItemText = ClassesAndEnums.D20.Roll() <= 20;
+            bool triggerKeyItemText = ClassesAndEnums.D20.Roll() == 20;
             if (triggerKeyItemText)
             {
                 int keyObjectIndex = Random.Range(0, ClassesAndEnums.IndexToKeyObjectAndMonologues.Count);
