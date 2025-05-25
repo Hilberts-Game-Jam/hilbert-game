@@ -6,10 +6,10 @@ namespace Scripts.Managers
 {
     public class CorridorManager : MonoBehaviour
     {
-        [SerializeField] private corridorGenerator corridorGen;
-        [SerializeField] private int chunkWidth = 20; // Width of corridor Chunk
-        private HashSet<int> generatedChunks = new HashSet<int>();
-        private Transform playerTransform;
+        [SerializeField] private corridorGenerator _corridorGen;
+        [SerializeField] private int _chunkWidth = 10; // Width of corridor Chunk
+        private HashSet<int> _generatedChunks = new HashSet<int>();
+        private Transform _playerTransform;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -21,33 +21,51 @@ namespace Scripts.Managers
                 return;
             }
 
-            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
+            _playerTransform = player.transform; // <-- FIX: assign playerTransform!
 
-            corridorGen.generateCorridor(playerPosition_x);
+            int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
+            int startChunk = Mathf.FloorToInt(playerPosition_x / _chunkWidth);
+            _corridorGen.generateCorridor(startChunk * _chunkWidth); // generate initial chunk
+            _generatedChunks.Add(startChunk);
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (playerTransform == null) return;
+            if (_playerTransform == null) return;
 
-            int currentChunk = Mathf.FloorToInt(playerTransform.position.x / chunkWidth);
+            int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
 
-            if (!generatedChunks.Contains(currentChunk))
+            for (int offset = -1; offset <= 1; offset++)
             {
-                corridorGen.generateCorridor(currentChunk);
-                generatedChunks.Add(currentChunk);
+                int chunkToCheckRight = currentChunk + offset;
+                if (!_generatedChunks.Contains(chunkToCheckRight))
+                {
+                    Debug.Log("Chunk generated");
+                    _corridorGen.generateCorridor(chunkToCheckRight * _chunkWidth);
+                    _generatedChunks.Add(chunkToCheckRight);
+                    if (_generatedChunks.Contains(chunkToCheckRight - 3))
+                    {
+                        _corridorGen.destroyCorridor((chunkToCheckRight - 3) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheckRight - 3);
+                    }
+                    if (_generatedChunks.Contains(chunkToCheckRight + 3))
+                    {
+                        _corridorGen.destroyCorridor((chunkToCheckRight + 3) * _chunkWidth);
+                        _generatedChunks.Remove(chunkToCheckRight + 3);
+                    }                   
+                }
             }
         }
 
         private void GenerateChunkAtPlayer()
         {
-            if (playerTransform == null) return;
-            int currentChunk = Mathf.FloorToInt(playerTransform.position.x / chunkWidth);
-            if (!generatedChunks.Contains(currentChunk))
+            if (_playerTransform == null) return;
+            int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
+            if (!_generatedChunks.Contains(currentChunk))
             {
-                corridorGen.generateCorridor(currentChunk);
-                generatedChunks.Add(currentChunk);
+                _corridorGen.generateCorridor(currentChunk);
+                _generatedChunks.Add(currentChunk);
             }
         }
     }

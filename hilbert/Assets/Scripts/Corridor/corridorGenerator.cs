@@ -8,20 +8,20 @@ namespace Corridor
     public class corridorGenerator : MonoBehaviour
     {
         [SerializeField] public Tilemap corridorTilemap;
-        [SerializeField] private TileBase corridorTile;
-        [SerializeField] private TileBase lampUpper;
-        [SerializeField] private TileBase lampBottom;
-        [SerializeField] private TileBase wallUpper;
-        [SerializeField] private TileBase wallBottom;
-        [SerializeField] private TileBase doorUpper;
-        [SerializeField] private TileBase doorBottom;
-        [SerializeField] private TileBase elevatorUpper;
-        [SerializeField] private TileBase elevatorBottom;
+        [SerializeField] private TileBase _corridorTile;
+        [SerializeField] private TileBase _lampUpper;
+        [SerializeField] private TileBase _lampBottom;
+        [SerializeField] private TileBase _wallUpper;
+        [SerializeField] private TileBase _wallBottom;
+        [SerializeField] private TileBase _doorUpper;
+        [SerializeField] private TileBase _doorBottom;
+        [SerializeField] private TileBase _elevatorUpper;
+        [SerializeField] private TileBase _elevatorBottom;
 
-        private TileBase[] upperWallElements;
-        private TileBase[] bottomWallElements;
-        private TileBase[] upperDoorElements;
-        private TileBase[] bottomDoorElements;
+        private TileBase[] _upperWallElements;
+        private TileBase[] _bottomWallElements;
+        private TileBase[] _upperDoorElements;
+        private TileBase[] _bottomDoorElements;
 
         public void generateCorridor(int position_x)
         {
@@ -31,7 +31,7 @@ namespace Corridor
                 for (int y = -2; y < 3; y++)
                 {
                     Vector3Int position = new Vector3Int(x, y, 0); // z = 0 for 2D tilemaps
-                    corridorTilemap.SetTile(position, corridorTile);
+                    corridorTilemap.SetTile(position, _corridorTile);
                 }
                 if (x % 5 == 0)
                 {
@@ -41,23 +41,23 @@ namespace Corridor
                     if (rand1 < 5) // 5% chance for Elevator
                     {
                         Vector3Int elevatorPosition = new Vector3Int(x , 3, 0);
-                        corridorTilemap.SetTile(elevatorPosition, elevatorUpper);
+                        corridorTilemap.SetTile(elevatorPosition, _elevatorUpper);
                     }
                     else // rest of the chances are Doors
                     {
                         Vector3Int doorPosition = new Vector3Int(x, 3, 0);
-                        corridorTilemap.SetTile(doorPosition, doorUpper);
+                        corridorTilemap.SetTile(doorPosition, _doorUpper);
                     }
 
                     if (rand2 < 5) // Im once again asking your for 5% elevator access 
                     {
                         Vector3Int elevatorPosition = new Vector3Int(x , -3, 0);
-                        corridorTilemap.SetTile(elevatorPosition, elevatorBottom);
+                        corridorTilemap.SetTile(elevatorPosition, _elevatorBottom);
                     }
                     else // rest of the chances are Doors
                     {
                         Vector3Int doorPosition = new Vector3Int(x, -3, 0);
-                        corridorTilemap.SetTile(doorPosition, doorBottom);
+                        corridorTilemap.SetTile(doorPosition, _doorBottom);
                     }
                 }
                 else
@@ -68,32 +68,45 @@ namespace Corridor
                     int rand2 = Random.Range(0, 4);
                     if (rand1 == 0)
                     {
-                        corridorTilemap.SetTile(upperWall, lampUpper);
+                        corridorTilemap.SetTile(upperWall, _lampUpper);
                     }
                     else
                     {
-                        corridorTilemap.SetTile(upperWall, wallUpper);
+                        corridorTilemap.SetTile(upperWall, _wallUpper);
                     }
 
                     if (rand2 == 0)
                     {
-                         corridorTilemap.SetTile(bottomWall, lampBottom);
+                         corridorTilemap.SetTile(bottomWall, _lampBottom);
                     }
                     else
                     {
-                        corridorTilemap.SetTile(bottomWall, wallBottom);
+                        corridorTilemap.SetTile(bottomWall, _wallBottom);
                     }
                 }
+            }
+        }
+
+        public void destroyCorridor(int position_x)
+        {
+            for (int x = position_x - 10; x < position_x + 10; x++)
+            {
+                for (int y = -3; y <= 3; y++)
+                {
+                    Vector3Int toBeRemoved = new Vector3Int(x, y, 0);
+                    corridorTilemap.SetTile(toBeRemoved, null);
+                    Debug.Log("Destroyed a Tile");
+                }            
             }
         }
 
 
         void Awake()
         {
-            upperWallElements = new TileBase[] { lampUpper, wallUpper };
-            bottomWallElements = new TileBase[] { lampBottom, wallBottom };
-            upperDoorElements = new TileBase[] { doorUpper, elevatorUpper };
-            bottomDoorElements = new TileBase[] { doorBottom, elevatorBottom };
+            _upperWallElements = new TileBase[] { _lampUpper, _wallUpper };
+            _bottomWallElements = new TileBase[] { _lampBottom, _wallBottom };
+            _upperDoorElements = new TileBase[] { _doorUpper, _elevatorUpper };
+            _bottomDoorElements = new TileBase[] { _doorBottom, _elevatorBottom };
         }
     }
 }

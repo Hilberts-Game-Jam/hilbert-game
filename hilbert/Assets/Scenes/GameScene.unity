@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 1997537221}
   - component: {fileID: 1997537220}
   m_Layer: 0
-  m_Name: Corridor
+  m_Name: CorridorGeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
