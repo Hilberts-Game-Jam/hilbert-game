@@ -40,8 +40,11 @@ namespace Scripts.Input
         
         private void OnUsePerformed(InputAction.CallbackContext context)
         {
-            if (context.performed)
-                UsePressed?.Invoke();
+            Debug.Log("Use action performed");
+            
+            UsePressed?.Invoke();
+            Debug.Log(UsePressed != null ? "Use action invoked" : "No subscribers for UsePressed");
+            
         }
 
         private void OnMoveChanged(InputAction.CallbackContext context)
