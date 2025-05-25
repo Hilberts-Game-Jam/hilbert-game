@@ -1,10 +1,130 @@
 {
+  "BROKEN_BED": [
+    "Whoever slept on this needs to work out more.",
+    "Love conquers all, including structural integrity.",
+    "Well... they had a fun night.",
+    "Gravity wins once again.",
+    "Some beds hold dreams, this one can't even hold weight.",
+    "Sleeping here is an act of bravery... or surrender.",
+    "Is this modern hospitality?.",
+    "Even inanimate objects reject me.",
+    "Excellent, now I can sleep on a metaphor.",
+    "Good. I was hoping to sleep at an angle of defeat."
+  ],
+  "BROKEN_TABLE": [
+    "The leg isn't where it's supposed to be.",
+    "So stability is optional now ?",
+    "It's not broken it's a feature called \"wobble\".",
+    "Appearntly furniture can go on strike now.",
+    "Creaks like a haunted house.",
+    "This could qualify as art now.",
+    "It has more character than structure.",
+    "It qualifies as firewood now.",
+    "Someone must have misread the instruction during assembly.",
+    "To think someone could be this bad at assembling furniture."
+  ],
+  "BURNED_BED": [
+    "That's not up to code.",
+    "Looks like there was a fire... or at least a very bad idea.",
+    "That's one way to make sure the bedbugs are gone.",
+    "I don't want to know what happened here.",
+    "This is unusually warm for a room-temperature mattress.",
+    "Burned dreams. Medium-rare despair.",
+    "Well, at least it's warm now.",
+    "A funeral pyre for insomnia.",
+    "Still more inviting than a futon.",
+    "This was either a romantic night or a demon summoning."
+  ],
+  "BURNED_SHELF": [
+    "Nothing like a fire-damaged item to brighten the room.",
+    "It tried to be warm, but got incinerated.",
+    "Why decorate with furniture from hell?.",
+    "The room feels warmer. Or more hopeless.",
+    "Burnt wood. The scent of optimising ending.",
+    "It's not stylish—just scorched.",
+    "Was this a shelf or a sacrifice.",
+    "Some people see texture. I see despair.",
+    "Look like it lost an argument with a candle.",
+    "Why can't people be more responsible with fire?."
+  ],
+  "BURNED_TABLE": [
+    "It's a strong case for using coasters.",
+    "The table fought fire. Lost slightly.",
+    "Slightly crispy around the edges.",
+    "It has seen better days.",
+    "This must be one of the premium versions with smoke signals.",
+    "Could be rustic. Or just unsafe.",
+    "Ideal if you are looking for a post-apocalyptic look.",
+    "This doesn't scream \"fine dining\".",
+    "This looks slightly toasted.",
+    "Why was this not replaced?."
+  ],
   "item": [
     "item interaction 1",
     "item interaction 2"
   ],
+  "MOIST_BED": [
+    "Someone must have had a rough night.",
+    "Whoever was here before me must have had fun.",
+    "The poor employees who have to wash this bedding.",
+    "This bed tells a story... and it's wet.",
+    "This bed has seen a lot of action.",
+    "Is this...normal in this hotel?.",
+    "Ugh—this stain is still warm.",
+    "Yikes... that's not a shadow is it.",
+    "I don't even want to know what happened here.",
+    "The bedding could use a wash."
+  ],
+  "MOIST_SHELF": [
+    "I wouldn't touch that without gloves.",
+    "Who sweats on a shelf?.",
+    "Moisture damage.",
+    "I didn't know oak could perspire.",
+    "Sturdy, but deeply uncomfortable.",
+    "Slick with what I hope is humidity.",
+    "As inviting as a used treadmill.",
+    "The shelf's damp demeanour speaks volumes.",
+    "Sweat stained and story-rich.",
+    "It smells like ambition failed her."
+  ],
+  "MOIST_TABLE": [
+    "This table wears its history in salt and effort.\"",
+    "A table with stains of sweat.",
+    "Someone must have had a hard time on this table.",
+    "Clearly well-used. Possibly too well.",
+    "Not freshly polished, that's for sure.",
+    "Slightly sticky to the touch. Disgusting.",
+    "I don't know if it's shiny or ?... its damp. Really damp",
+    "Someone must have rested here after a workout session.",
+    "This was definitely not wiped recently. Or often.",
+    "Is this up to health and safety standards?"
+  ],
   "none": [
     "none interaction 1",
     "none interaction 2"
+  ],
+  "NORMAL_BED": [
+    "Looks like a decent place to rest.",
+    "A pretty standard setup.",
+    "It's a bed. It does its job.",
+    "Neither bad nor good—just bed.",
+    "Reliable as always.",
+    "Nothing here to write home about, but that's fine.",
+    "A mattress. Four legs. No drama. Fine.",
+    "Impressively average.",
+    "A celebration of medium expectations.",
+    "Looks like someone tried. Just not too hard."
+  ],
+  "NORMAL_SHELF": [
+    "A shelf. How thrilling.",
+    "It exists. Fantastic.\"",
+    "It works. I suppose that’s rare.",
+    "An unremarkable rectangle of wood.",
+    "The Ikea dream realized in mediocrity.",
+    "Not exciting, but at least it won’t explode.",
+    "Why yes, it is a shelf. What else did I expect?",
+    "The beige of furniture.",
+    "A monument to unexceptional success.",
+    "If contentment were furniture, it would be this."
   ]
 }
