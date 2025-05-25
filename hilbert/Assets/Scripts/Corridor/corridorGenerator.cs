@@ -96,7 +96,9 @@ namespace Corridor
                         Vector3Int doorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), -3, 0);
                         corridorTilemap.SetTile(doorPosition, _doorBottom);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
-                        Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
+                        GameObject door = Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
+                        InteractableDoor doorInteractible = (InteractableDoor) door.GetComponent<InteractableDoor>();
+                        doorInteractible.leadsTo = "Room";
                     }
                 }
             }
