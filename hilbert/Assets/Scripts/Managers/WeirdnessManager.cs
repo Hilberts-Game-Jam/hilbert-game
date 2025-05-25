@@ -2,7 +2,7 @@ using Core;
 using Scripts.Core;
 using UnityEngine;
 
-namespace Managers
+namespace Scripts.Managers
 {
     /// <summary>
     /// Manages the weirdness level of the game. If a Elevator is used, the weirdness level increases.
@@ -56,6 +56,11 @@ namespace Managers
         public static void DecrementWeirdness()
         {
             WeirdnessLevel -= 1;
+        }
+        public static void ResetWeirdness()
+        {
+            WeirdnessLevel = 1;
+            Debug.Log("Weirdness Level reset to " + WeirdnessLevel);
         }
     }
 }

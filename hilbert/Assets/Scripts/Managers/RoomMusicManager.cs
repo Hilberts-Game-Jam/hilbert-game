@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Managers
+namespace Scripts.Managers
 {
     public class RoomMusicManager : MonoBehaviour
     {

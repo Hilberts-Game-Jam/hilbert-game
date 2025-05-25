@@ -34,7 +34,7 @@ namespace Scripts.Managers
             _generatedChunks.Clear();
             Debug.Log("generatedChunks hat" + _generatedChunks.Count + "Elements nach clear");
 
-            GenerateInitialCorridor();
+            //GenerateInitialCorridor();
 
             
             if (Instance)
@@ -114,8 +114,13 @@ namespace Scripts.Managers
 
             int playerPosition_x = Mathf.RoundToInt(player.transform.position.x);
             int startChunk = Mathf.FloorToInt(playerPosition_x / _chunkWidth);
-            _corridorGen.generateCorridor(startChunk * _chunkWidth);
-            _generatedChunks.Add(startChunk);
+
+            if (!_generatedChunks.Contains(startChunk))
+            {
+                _corridorGen.generateCorridor(startChunk * _chunkWidth);
+                _generatedChunks.Add(startChunk);            
+            }
+
         }
 
         public void DestroyEveryTile() {
