@@ -1,3 +1,0 @@
-type: item
-- item interaction 1
-- item interaction 2

@@ -11,6 +11,25 @@
     "Excellent, now I can sleep on a metaphor.",
     "Good. I was hoping to sleep at an angle of defeat."
   ],
+  "BROKEN_CHAIR": [
+    "Sitting is a gamble.",
+    "In theory it still works.",
+    "It's pitched forward like it's brooding.",
+    "Can't support me or my dreams.",
+    "The leg isn't pointing the way its supposed to.",
+    "It will fold unexpectedly, like a plot twist.",
+    "It could serve as an abstract sculpture.",
+    "There is still a hint of stability.",
+    "It doesn't function like it used to.",
+    "It's still recognizable as a chair... barley."
+  ],
+  "BROKEN_SUITCASE": [
+    "It's riddled with dents.",
+    "One wheel is missing along with the zipper.",
+    "Closing it will require tape and force.",
+    "A crisis on wheels.",
+    "Less suitcase more of a crate."
+  ],
   "BROKEN_TABLE": [
     "The leg isn't where it's supposed to be.",
     "So stability is optional now ?",
@@ -35,6 +54,18 @@
     "Still more inviting than a futon.",
     "This was either a romantic night or a demon summoning."
   ],
+  "BURNED_CHAIR": [
+    "That part used to be fluffier.\"",
+    "I might not want to sit on it.\"",
+    "Ashes where a cushion should be.\"",
+    "Now a cautionary tale.\"",
+    "There's a smell I won't forget.\"",
+    "The texture ranges from flammable to flaked.\"",
+    "It should be either in a museum or a dumpster, but not here.\"",
+    "Why was this not replaced ?.\"",
+    "It's still warm to the touch.\"",
+    "It doesn't scream safety.\""
+  ],
   "BURNED_SHELF": [
     "Nothing like a fire-damaged item to brighten the room.",
     "It tried to be warm, but got incinerated.",
@@ -46,6 +77,15 @@
     "Some people see texture. I see despair.",
     "Look like it lost an argument with a candle.",
     "Why can't people be more responsible with fire?."
+  ],
+  "BURNED_SUITCASE": [
+    "Slightly crispy but still works.",
+    "This won't get through customs.",
+    "The handle is partially fused with the rest.",
+    "Has seen fire and smells like it.",
+    "The texture is called \"Heatwave\".",
+    "The latch requires... persuasion.",
+    "Even the TSA would hesitate."
   ],
   "BURNED_TABLE": [
     "It's a strong case for using coasters.",
@@ -59,10 +99,6 @@
     "This looks slightly toasted.",
     "Why was this not replaced?."
   ],
-  "item": [
-    "item interaction 1",
-    "item interaction 2"
-  ],
   "MOIST_BED": [
     "Someone must have had a rough night.",
     "Whoever was here before me must have had fun.",
@@ -74,6 +110,18 @@
     "Yikes... that's not a shadow is it.",
     "I don't even want to know what happened here.",
     "The bedding could use a wash."
+  ],
+  "MOIST_CHAIR": [
+    "This chair tells a story... a moist one.",
+    "This chair has seen many... sitting efforts.",
+    "It's less absorbent than a sponge, but not by much.",
+    "There is a vaguely human-shaped stain.",
+    "It has not been cleaned recently or at all.",
+    "It hugs the sitter bag, damply.",
+    "It shows what poor hygiene does to furniture.",
+    "If it could speak, it would ask to be burnt.",
+    "The texture is... ambiguous.",
+    "Dampened expectations included."
   ],
   "MOIST_SHELF": [
     "I wouldn't touch that without gloves.",
@@ -87,6 +135,14 @@
     "Sweat stained and story-rich.",
     "It smells like ambition failed her."
   ],
+  "MOIST_SUITCASE": [
+    "The handle as seen more action than me.",
+    "Once coloured now worked and stained.",
+    "You can tell it's been somewhere.",
+    "It doesn't scream luxury.",
+    "It hasn't been cleaned, only relocated.",
+    "It's not gross just experienced."
+  ],
   "MOIST_TABLE": [
     "This table wears its history in salt and effort.\"",
     "A table with stains of sweat.",
@@ -99,9 +155,8 @@
     "This was definitely not wiped recently. Or often.",
     "Is this up to health and safety standards?"
   ],
-  "none": [
-    "none interaction 1",
-    "none interaction 2"
+  "NONE": [
+    "There is nothing i can interact with here."
   ],
   "NORMAL_BED": [
     "Looks like a decent place to rest.",
@@ -115,6 +170,18 @@
     "A celebration of medium expectations.",
     "Looks like someone tried. Just not too hard."
   ],
+  "NORMAL_CHAIR": [
+    "A classic seating experience.",
+    "I've met this chair before, everywhere.",
+    "It's average enough to forget.",
+    "Going un noticed is its reason for existence.",
+    "It's a chair what more do I want.",
+    "I sit, it holds. That's the contract.",
+    "It's average in a very safe way.",
+    "Could be in a waiting room.",
+    "It's not here to impress, just to support.",
+    "It feels so standard."
+  ],
   "NORMAL_SHELF": [
     "A shelf. How thrilling.",
     "It exists. Fantastic.\"",
@@ -126,5 +193,14 @@
     "The beige of furniture.",
     "A monument to unexceptional success.",
     "If contentment were furniture, it would be this."
+  ],
+  "NORMAL_SUITCASE": [
+    "It rolls. That's its whole job.",
+    "Standard-isuue hope chest.",
+    "Smells like fresh from the factory.",
+    "It's travel ready.",
+    "It gets from A to b without drama.",
+    "Not new, not old, just there.",
+    "A regular suitcase that is full of stickers."
   ]
 }

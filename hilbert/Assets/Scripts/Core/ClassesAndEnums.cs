@@ -22,11 +22,33 @@ namespace Scripts.Core
         /// <summary>
         /// Used to specify the type of interaction that the player is performing.
         /// </summary>
+        // todo: make this enum better
         public enum InteractionType
         {
+            BROKEN_BED,
+            BROKEN_CHAIR,
+            BROKEN_SUITCASE,
+            BROKEN_TABLE,
+            
+            BURNED_BED,
+            BURNED_CHAIR,
+            BURNED_SHELF,
+            BURNED_SUITCASE,
+            BURNED_TABLE,
+            
+            MOIST_BED,
+            MOIST_CHAIR,
+            MOIST_SHELF,
+            MOIST_SUITCASE,
+            MOIST_TABLE,
+            
+            NORMAL_BED,
+            NORMAL_CHAIR,
+            NORMAL_SHELF,
+            NORMAL_SUITCASE,
+            
             NONE,
             DOOR,
-            ITEM,
             ELEVATOR,
         }
         
