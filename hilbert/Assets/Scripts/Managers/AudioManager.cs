@@ -1,19 +1,31 @@
+using System;
 using UnityEngine;
 
 namespace Scripts.Managers
 {
     public class AudioManager : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        [SerializeField] public AudioClip[] _audioClips;
+        [SerializeField] private AudioSource _audioSource;
+
+ 
+        public void PlayDoorOpen()
         {
-        
+            _audioSource.clip = _audioClips[0];
+            _audioSource.Play();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void PlayElevatorDing()
         {
-        
+            _audioSource.clip = _audioClips[1];
+            _audioSource.Play();
+
+        }
+
+        public void PlayKeyItemFound()
+        {
+            _audioSource.clip = _audioClips[2];
+            _audioSource.Play();
         }
     }
 }
