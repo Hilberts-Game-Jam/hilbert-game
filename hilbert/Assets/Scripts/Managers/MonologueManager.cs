@@ -6,7 +6,7 @@ using Scripts.Core;
 using TMPro;
 using UnityEngine;
 
-namespace Managers
+namespace Scripts.Managers
 {
     [System.Serializable]
     public class MonologueData

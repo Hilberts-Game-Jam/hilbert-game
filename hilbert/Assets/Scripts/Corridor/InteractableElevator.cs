@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using Scripts.Interfaces;
 using Scripts.Managers;
-using Managers;
 
 namespace Corridor {
     public class InteractableElevator : MonoBehaviour, IInteractable

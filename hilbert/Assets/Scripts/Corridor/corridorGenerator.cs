@@ -2,7 +2,7 @@ using UnityEngine;
 using Scripts.Player;
 using System.Runtime.CompilerServices;
 using UnityEngine.Tilemaps;
-using Managers;
+using Scripts.Managers;
 
 namespace Corridor
 {
