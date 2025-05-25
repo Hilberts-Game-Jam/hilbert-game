@@ -2,6 +2,7 @@ using UnityEngine;
 using Corridor;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.Managers
 {
@@ -17,8 +18,25 @@ namespace Scripts.Managers
 
         public static CorridorManager Instance;
 
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
         private void Awake()
         {
+            Debug.Log("generatedChunks hat" + _generatedChunks.Count + "Elements");
+            _generatedChunks.Clear();
+            Debug.Log("generatedChunks hat" + _generatedChunks.Count + "Elements nach clear");
+
+            GenerateInitialCorridor();
+
+            
             if (Instance)
             {
                 Destroy(gameObject);
@@ -33,36 +51,54 @@ namespace Scripts.Managers
 
         void Start()
         {
-            GenerateInitialCorridor();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (_playerTransform == null) return;
-
-            int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
-
-            for (int offset = -2; offset <= 2; offset++)
+            if (SceneManager.GetSceneByName("GameScene") == SceneManager.GetActiveScene())
             {
-                int chunkToCheck = currentChunk + offset;
-                if (!_generatedChunks.Contains(chunkToCheck))
+                if (_playerTransform == null)
                 {
-                    Debug.Log("Chunk generated");
-                    _corridorGen.generateCorridor(chunkToCheck * _chunkWidth);
-                    _generatedChunks.Add(chunkToCheck);
-                    if (_generatedChunks.Contains(chunkToCheck - 5))
+                    GameObject player = GameObject.Find("Player");
+                    if (player != null)
                     {
-                        _corridorGen.destroyCorridor((chunkToCheck - 5) * _chunkWidth);
-                        _generatedChunks.Remove(chunkToCheck - 5);
+                        _playerTransform = player.transform;
+                        GenerateInitialCorridor();
                     }
-                    if (_generatedChunks.Contains(chunkToCheck + 5))
+                    else return;
+                }
+
+                int currentChunk = Mathf.FloorToInt(_playerTransform.position.x / _chunkWidth);
+
+                for (int offset = -2; offset <= 2; offset++)
+                {
+                    int chunkToCheck = currentChunk + offset;
+                    if (!_generatedChunks.Contains(chunkToCheck))
                     {
-                        _corridorGen.destroyCorridor((chunkToCheck + 5) * _chunkWidth);
-                        _generatedChunks.Remove(chunkToCheck + 5);
+                        Debug.Log("Chunk generated");
+                        _corridorGen.generateCorridor(chunkToCheck * _chunkWidth);
+                        _generatedChunks.Add(chunkToCheck);
+                        if (_generatedChunks.Contains(chunkToCheck - 5))
+                        {
+                            _corridorGen.destroyCorridor((chunkToCheck - 5) * _chunkWidth);
+                            _generatedChunks.Remove(chunkToCheck - 5);
+                        }
+                        if (_generatedChunks.Contains(chunkToCheck + 5))
+                        {
+                            _corridorGen.destroyCorridor((chunkToCheck + 5) * _chunkWidth);
+                            _generatedChunks.Remove(chunkToCheck + 5);
+                        }
                     }
                 }
             }
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            _corridorGen = FindObjectOfType<corridorGenerator>();
+            _generatedChunks.Clear();
+            _playerTransform = null;
         }
 
         public void GenerateInitialCorridor()

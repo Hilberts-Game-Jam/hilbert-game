@@ -26,6 +26,8 @@ namespace Corridor
         private TileBase[] _bottomWallElements;
         private TileBase[] _upperDoorElements;
         private TileBase[] _bottomDoorElements;
+        
+        public static corridorGenerator Instance;
 
         public void generateCorridor(int position_x)
         {
@@ -53,7 +55,7 @@ namespace Corridor
 
                 if (rand2 == 0)
                 {
-                        corridorTilemap.SetTile(bottomWall, _lampBottom);
+                    corridorTilemap.SetTile(bottomWall, _lampBottom);
                 }
                 else
                 {
@@ -79,8 +81,8 @@ namespace Corridor
                         Vector3Int doorPosition = new Vector3Int(x + Random.Range(0, WeirdnessManager.WeirdnessLevel), 3, 0);
                         corridorTilemap.SetTile(doorPosition, _doorUpper);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
-                        GameObject door =  Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
-                        InteractableDoor doorInteractible = (InteractableDoor) door.GetComponent<InteractableDoor>();
+                        GameObject door = Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
+                        InteractableDoor doorInteractible = (InteractableDoor)door.GetComponent<InteractableDoor>();
                         doorInteractible.leadsTo = "Room";
                     }
 
@@ -97,7 +99,7 @@ namespace Corridor
                         corridorTilemap.SetTile(doorPosition, _doorBottom);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
                         GameObject door = Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
-                        InteractableDoor doorInteractible = (InteractableDoor) door.GetComponent<InteractableDoor>();
+                        InteractableDoor doorInteractible = (InteractableDoor)door.GetComponent<InteractableDoor>();
                         doorInteractible.leadsTo = "Room";
                     }
                 }
@@ -120,6 +122,8 @@ namespace Corridor
 
         void Awake()
         {
+            Instance = this;
+
             _upperWallElements = new TileBase[] { _lampUpper, _wallUpper };
             _bottomWallElements = new TileBase[] { _lampBottom, _wallBottom };
             _upperDoorElements = new TileBase[] { _doorUpper, _elevatorUpper };
