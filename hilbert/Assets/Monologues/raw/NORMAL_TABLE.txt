@@ -1,0 +1,11 @@
+type: NORMAL_TABLE
+- This is a table.
+- It is what it is... a table.
+- Designed to be ignored.
+- The epitome of average.
+- It works.
+- Nothing to see here just a table.
+- It's a wood plate with four corners.
+- It likely came with a manual.
+- Sometimes a table is just a table.
+- I won't remember it, and that's okay.

@@ -53,7 +53,10 @@ namespace Scripts.Core
 
             DOOR,
             ELEVATOR,
-            START
+            START,
+            
+            NORMAL_TABLE,
+            BROKEN_SHELF,
         }
         
         public static Dictionary<KeyObject, List<string>> KeyObjectToMonologues = new()
