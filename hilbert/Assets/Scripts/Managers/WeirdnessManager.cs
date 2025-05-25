@@ -15,7 +15,7 @@ namespace Managers
         public static int WeirdnessLevel 
         { 
             get => _weirdnessLevel;
-            private set
+            private set 
             {
                 if (_weirdnessLevel != value)
                 {
@@ -27,7 +27,6 @@ namespace Managers
                         Events.TriggerWeirdnessChangeEvent(_weirdnessLevel);
                     }
                 }
-                _weirdnessLevel = 3; //TODO: remove
             }
         }
 
@@ -48,10 +47,11 @@ namespace Managers
                 IncrementWeirdness();
             }
         }
-        
+
         public static void IncrementWeirdness()
         {
             WeirdnessLevel += 1;
+            Debug.Log("Weirdness Level" + WeirdnessLevel);
         }
         public static void DecrementWeirdness()
         {
