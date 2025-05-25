@@ -5,12 +5,10 @@ namespace Core
 {
     public class SwitchScene : MonoBehaviour
     {
-        public static void SwitchToScene(string sceneName)
+        [SerializeField] public string sceneName;
+        public void SwitchToScene()
         {
-            if (Application.CanStreamedLevelBeLoaded(sceneName))
-            {
-                SceneManager.LoadScene(sceneName);
-            }
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

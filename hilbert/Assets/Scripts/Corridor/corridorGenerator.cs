@@ -53,7 +53,9 @@ namespace Corridor
                         Vector3Int doorPosition = new Vector3Int(x, 3, 0);
                         corridorTilemap.SetTile(doorPosition, _doorUpper);
                         Vector3 worldPos = corridorTilemap.CellToWorld(doorPosition) + new Vector3(0.5f, 0.5f, 0);
-                        Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
+                        GameObject door =  Instantiate(_doorInteractablePrefab, worldPos, Quaternion.identity);
+                        InteractableDoor doorInteractible = (InteractableDoor) door.GetComponent<InteractableDoor>();
+                        doorInteractible.leadsTo = "Room";
                     }
 
                     if (rand2 < 5) // Im once again asking your for 5% elevator access 
