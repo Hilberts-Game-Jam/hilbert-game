@@ -26,6 +26,8 @@ namespace Scripts.Managers
         public List<FurnitureObjectInfo> furniture_objects = new List<FurnitureObjectInfo>();
         private string[] possibleObjects = new[] {"Chest", "Couch", "Shelf", "Suitcase", "Table"};
 
+        private const double WALKABLE_THRESHOLD = 0.7;
+
         private void Awake()
         {
             // Creating Singleton Instance
@@ -58,7 +60,7 @@ namespace Scripts.Managers
         private void GenerateNewRoom()
         {
 
-            Debug.Log("Generating");
+            Debug.Log("Generating Room");
             
             furniture_objects = new List<FurnitureObjectInfo>();
             
@@ -88,14 +90,10 @@ namespace Scripts.Managers
 
             spawn_pos = door_pos;
             
-            Debug.Log("DoorPos: " + door_pos);
-            
             if (door_pos.x == 0) spawn_pos.x++;
             else if (door_pos.x == layout.GetWidth() - 1) spawn_pos.x--;
             else if (door_pos.y == 0) spawn_pos.y++;
             else spawn_pos.y--;
-            
-            Debug.Log("SpawnPos: " + spawn_pos);
             
             layout.SetTileAt(door_pos.x, door_pos.y, TileType.DOOR);
             
@@ -124,6 +122,7 @@ namespace Scripts.Managers
                         furniture_objects.Add(newObstacle);
                     }
                 }
+                
             }
             
         }
@@ -211,8 +210,6 @@ namespace Scripts.Managers
 
         private bool CheckIfAreaIsReachable(RoomLayout thisLayout)
         {
-            
-            thisLayout.PrintMap();
 
             // If spawnpoint is blocked area is invalid
             if (thisLayout.GetTileAt(spawn_pos.x, spawn_pos.y) != TileType.FREE) return false;
@@ -326,15 +323,11 @@ namespace Scripts.Managers
                 }
             }
 
-            Debug.Log("Free: " + freeTiles + ", Reachable: " + reachableTiles);
-
-            if ((double) reachableTiles / (double) freeTiles <= 0.5)
+            if ((double) reachableTiles / (double) freeTiles <= WALKABLE_THRESHOLD)
             {
-                Debug.Log("(E) Reachable area: " + (double) reachableTiles / (double) freeTiles);
                 return false;
             }
 
-            Debug.Log("(G) Reachable area: " + (double) reachableTiles / (double) freeTiles);
             return true;
 
         }

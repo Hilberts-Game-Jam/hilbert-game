@@ -52,6 +52,32 @@ namespace Scripts.Core
                 _y_end = y_end;
                 _name = name;
             }
+
+            public int GetXStart()
+            {
+                return _x_start;
+            }
+            
+            public int GetYStart()
+            {
+                return _y_start;
+            }
+            
+            public int GetXEnd()
+            {
+                return _x_end;
+            }
+            
+            public int GetYEnd()
+            {
+                return _y_end;
+            }
+
+            public string GetName()
+            {
+                return _name;
+            }
+            
         }
         
         public static class D20
