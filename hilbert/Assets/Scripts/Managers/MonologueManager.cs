@@ -94,6 +94,7 @@ namespace Managers
 
         private void DisplayDialog(ClassesAndEnums.InteractionType interactionType)
         {
+            Debug.Log("Displaying dialog for interaction type: " + interactionType);
             if (interactionType == ClassesAndEnums.InteractionType.DOOR || 
                 interactionType == ClassesAndEnums.InteractionType.ELEVATOR)
             {
@@ -103,6 +104,8 @@ namespace Managers
             
             // Timer Coroutine is still running, do not create a new dialog
             if (_autoCloseCoroutine != null) { return; }
+            
+            Debug.Log("Creating dialog for interaction type: " + interactionType);
             
             // Create dialog instance if it doesn't exist
             if (_currentDialogInstance == null)
@@ -131,6 +134,8 @@ namespace Managers
                 Debug.LogWarning($"No dialog text found for interaction type: {interactionType}");
                 return; // Exit if no dialog text is available
             }
+            
+            Debug.Log("Text for interaction: " + _dialogText.text);
 
             if (_speakerNameText != null)
             {
