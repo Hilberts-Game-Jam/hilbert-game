@@ -295,13 +295,16 @@ namespace Scripts.Managers
                 return (false, "I don't know what to say to that.");
             }
             
-            bool triggerKeyItemText = ClassesAndEnums.D20.Roll() == 20;
+            bool triggerKeyItemText = ClassesAndEnums.D20.Roll() <= 20;
             if (triggerKeyItemText)
             {
                 int keyObjectIndex = Random.Range(0, ClassesAndEnums.IndexToKeyObjectAndMonologues.Count);
                 var outputKeyItemAndTexts = ClassesAndEnums.IndexToKeyObjectAndMonologues[keyObjectIndex];
                 var chosenMonologue = outputKeyItemAndTexts.Item2[Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1]];
-                Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
+                if (Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] < 2)
+                {
+                    Player.Player.PlayerKeyObjects[outputKeyItemAndTexts.Item1] += 1;
+                }
                 return (true, chosenMonologue);
             }
 

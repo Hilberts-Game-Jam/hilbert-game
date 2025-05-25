@@ -31,8 +31,12 @@ namespace Scripts.Player
         [SerializeField] private static int _resets = 0;
         
         private IInteractable _currentInteractable;
-        
-        public static Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects = new Dictionary<ClassesAndEnums.KeyObject, int>();
+
+        public static Dictionary<ClassesAndEnums.KeyObject, int> PlayerKeyObjects =
+            new Dictionary<ClassesAndEnums.KeyObject, int>()
+            {
+                { ClassesAndEnums.KeyObject.MIRROR_SHARD , 0}
+            };
         
         private void Awake()
         {
